@@ -2964,7 +2964,7 @@ function Library:Window(Text)
 				ColourSelection.AnchorPoint                 = Vector2.new(0.5, 0.5)
 				ColourSelection.BackgroundColor3            = Color3.fromRGB(255, 255, 255)
 				ColourSelection.BackgroundTransparency      = 1.000
-				ColourSelection.Position                    = UDim2.new(Preset and select(3, Color3.ToHSV(Preset)))
+				ColourSelection.Position                    = UDim2.new(Preset and select(3, Color3.toHSV(Preset)))
 				ColourSelection.Size                        = UDim2.new(0, 18, 0, 18)
 				ColourSelection.Image                       = "http://www.roblox.com/asset/?id=4805639000"
 				ColourSelection.ScaleType                   = Enum.ScaleType.Fit
@@ -2998,7 +2998,7 @@ function Library:Window(Text)
 				HueSelection.AnchorPoint            = Vector2.new(0.5, 0.5)
 				HueSelection.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
 				HueSelection.BackgroundTransparency = 1.000
-				HueSelection.Position               = UDim2.new(0.48, 0, 1 - select(1, Color3.ToHSV(Preset)))
+				HueSelection.Position               = UDim2.new(0.48, 0, 1 - select(1, Color3.toHSV(Preset)))
 				HueSelection.Size                   = UDim2.new(0, 18, 0, 18)
 				HueSelection.Image                  = "http://www.roblox.com/asset/?id=4805639000"
 
