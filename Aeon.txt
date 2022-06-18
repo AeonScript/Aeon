@@ -2526,7 +2526,7 @@ function Library:Window(Text)
 					pcall(Callback, ToChange)
 				end
 
-				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
+				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 				return SliderFunc
 			end
 
@@ -3204,6 +3204,7 @@ function Library:Window(Text)
 			end
 
 			function ChannelContent:Label(Text)
+				local LabelFunc                   = {}
 				local Label                       = Instance.new("TextButton")
 				local LabelTitle                  = Instance.new("TextLabel")
 
@@ -3230,8 +3231,12 @@ function Library:Window(Text)
 				LabelTitle.TextColor3             = Color3.fromRGB(127, 131, 137)
 				LabelTitle.TextSize               = 14.000
 				LabelTitle.TextXAlignment         = Enum.TextXAlignment.Left
-
+				
 				ChannelHolder.CanvasSize          = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
+				
+				function LabelFunc:Change(Value)
+					LabelTitle.Text = Value
+				end
 			end
 
 			function ChannelContent:Bind(Text, PresetBind, Callback)
