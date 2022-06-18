@@ -86,7 +86,7 @@ end
 
 function Library:Window(Text)
 	local CurrentServerToggled              = ""
-	local Opened                            = true
+	local Enabled                           = true
 	local Minimised                         = false
 	local FS                                = false
 
@@ -263,7 +263,7 @@ function Library:Window(Text)
 	ServersHoldFrame.BackgroundTransparency = 1.000
 	ServersHoldFrame.BorderColor3           = Color3.fromRGB(27, 42, 53)
 	ServersHoldFrame.Size                   = UDim2.new(0, 71, 0, 396)
-
+	
 	ServersHold.Name                        = "ServersHold"
 	ServersHold.Parent                      = ServersHoldFrame
 	ServersHold.Active                      = true
@@ -299,7 +299,7 @@ function Library:Window(Text)
 	CloseBtn.MouseButton1Click:Connect(
 		function()
 			MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-			Opened = not Opened
+			Enabled = not Enabled
 		end
 	)
 
@@ -339,8 +339,8 @@ function Library:Window(Text)
 		end
 	)
 	
-	function Library:Open()
-		if Opened == false then
+	function Library:Enable()
+		if Enabled == false then
 			MainFrame:TweenSize(
 				UDim2.new(0, 681, 0, 396),
 				Enum.EasingDirection.Out,
@@ -358,7 +358,7 @@ function Library:Window(Text)
 			)
 		end
 
-		Opened = not Opened
+		Enabled = not Enabled
 	end
 	
 	function Library:Notification(TitleText, DescText, BtnText)
