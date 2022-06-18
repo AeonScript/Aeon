@@ -3203,7 +3203,7 @@ function Library:Window(Text)
 				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
 
-			function ChannelContent:Label(Text, Callback)
+			function ChannelContent:Label(Text)
 				local LabelFunc                   = {}
 				local Label                       = Instance.new("TextButton")
 				local LabelTitle                  = Instance.new("TextLabel")
@@ -3236,8 +3236,9 @@ function Library:Window(Text)
 				
 				function LabelFunc:Change(Value)
 					LabelTitle.Text = Value
-					pcall(Callback, LabelTitle.Text)
 				end
+				
+				return LabelFunc
 			end
 
 			function ChannelContent:Bind(Text, PresetBind, Callback)
