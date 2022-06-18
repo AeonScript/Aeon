@@ -19,7 +19,7 @@ end)
 
 Player_Display = Player_File["Player_Display"] or "https://www.roblox.com/headshot-thumbnail/image?userId="..LocalPlayer.UserId.."&width=420&height=420&format=png"
 Player_Name    = Player_File["Player_Name"] or LocalPlayer.Name
-Player_ID      = Player_File["Player_ID"] or LocalPlayer.UserId
+Player_ID      = Player_File["Player_ID"] or string.sub(tostring(LocalPlayer.UserId), 1, 4)
 
 local function Save_File()
 	Player_File["Player_Display"] = Player_Display
@@ -43,7 +43,7 @@ local function Draggable(TopBarObject, Object)
 				StartPosition.Y.Scale,
 				StartPosition.Y.Offset + Delta.Y
 			)
-		
+
 		Object.Position = Position
 	end
 
@@ -290,12 +290,6 @@ function Library:Window(Text)
 	ServersHoldPadding.Name                 = "ServersHoldPadding"
 	ServersHoldPadding.Parent               = ServersHold
 
-	CloseBtn.MouseButton1Click:Connect(
-		function()
-			MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-		end
-	)
-
 	CloseBtn.MouseEnter:Connect(
 		function()
 			CloseBtn.BackgroundColor3 = Color3.fromRGB(240, 71, 71)
@@ -307,7 +301,13 @@ function Library:Window(Text)
 			CloseBtn.BackgroundColor3 = Color3.fromRGB(32, 34, 37)
 		end
 	)
-
+	
+	CloseBtn.MouseButton1Click:Connect(
+		function()
+			MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+		end
+	)
+	
 	MinimiseBtn.MouseEnter:Connect(
 		function()
 			MinimiseBtn.BackgroundColor3 = Color3.fromRGB(40, 43, 46)
@@ -339,7 +339,7 @@ function Library:Window(Text)
 					true
 				)
 			end
-			
+
 			Minimised = not Minimised
 		end
 	)
@@ -466,6 +466,14 @@ function Library:Window(Text)
 	CloseSettingsBtnIcon.Image                  = "http://www.roblox.com/asset/?id=6035047409"
 	CloseSettingsBtnIcon.ImageColor3            = Color3.fromRGB(222, 222, 222)
 
+	CloseSettingsBtn.MouseEnter:Connect(function()
+		CloseSettingsBtnCircle.BackgroundColor3 = Color3.fromRGB(72, 76, 82)
+	end)
+
+	CloseSettingsBtn.MouseLeave:Connect(function()
+		CloseSettingsBtnCircle.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
+	end)
+	
 	CloseSettingsBtn.MouseButton1Click:Connect(function()
 		SettingsOpened           = false
 		TopFrameHolder.Visible   = true
@@ -489,15 +497,7 @@ function Library:Window(Text)
 		wait(.3)
 		SettingsFrame.Visible = false
 	end)
-
-	CloseSettingsBtn.MouseEnter:Connect(function()
-		CloseSettingsBtnCircle.BackgroundColor3 = Color3.fromRGB(72, 76, 82)
-	end)
-
-	CloseSettingsBtn.MouseLeave:Connect(function()
-		CloseSettingsBtnCircle.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
-	end)
-
+	
 	UserInputService.InputBegan:Connect(
 		function(Current, Processed)
 			if Current.KeyCode == Enum.KeyCode.RightControl then
@@ -872,6 +872,7 @@ function Library:Window(Text)
 			Player_Display           = tostring(AvatarTextbox.Text)
 			UserImage.Image          = Player_Display 
 			UserPanelUserImage.Image = Player_Display
+			
 			Save_File()
 
 			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
@@ -945,6 +946,7 @@ function Library:Window(Text)
 			Player_Display           = "https://www.roblox.com/headshot-thumbnail/image?userId="..LocalPlayer.UserId.."&width=420&height=420&format=png"
 			UserImage.Image          = Player_Display 
 			UserPanelUserImage.Image = Player_Display
+			
 			Save_File()
 
 			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
@@ -967,7 +969,23 @@ function Library:Window(Text)
 		ResetCorner.CornerRadius = UDim.new(0, 4)
 		ResetCorner.Name         = "ResetCorner"
 		ResetCorner.Parent       = ResetBtn
+		
+		CloseBtn2.MouseEnter:Connect(function()
+			TweenService:Create(
+				Close2Icon,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{ImageColor3 = Color3.fromRGB(210, 210, 210)}
+			):Play()
+		end)
 
+		CloseBtn2.MouseLeave:Connect(function()
+			TweenService:Create(
+				Close2Icon,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{ImageColor3 = Color3.fromRGB(119, 122, 127)}
+			):Play()
+		end)
+		
 		CloseBtn1.MouseButton1Click:Connect(function()
 			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
 			TweenService:Create(
@@ -985,7 +1003,7 @@ function Library:Window(Text)
 			wait(.2)
 			NotificationHolder:Destroy()
 		end)
-
+		
 		CloseBtn2.MouseButton1Click:Connect(function()
 			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
 			TweenService:Create(
@@ -1002,22 +1020,6 @@ function Library:Window(Text)
 
 			wait(.2)
 			NotificationHolder:Destroy()
-		end)
-
-		CloseBtn2.MouseEnter:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(210, 210, 210)}
-			):Play()
-		end)
-
-		CloseBtn2.MouseLeave:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(119, 122, 127)}
-			):Play()
 		end)
 
 		AvatarTextbox.Focused:Connect(function()
@@ -1372,14 +1374,18 @@ function Library:Window(Text)
 		ChangeBtn.MouseButton1Click:Connect(function()
 			Player_Name              = UsernameTextbox.Text
 			Player_ID                = TagTextbox.Text
+			
 			UserSettingsPadUser.Text = Player_Name
 			UserSettingsPadUser.Size = UDim2.new(0, UserSettingsPadUser.TextBounds.X + 2, 0, 19)
 			UserSettingsPadTag.Text  = "#"..Player_ID
-			UserPanelTag.Text        = "#"..Player_ID
+			
 			UserPanelUser.Text       = Player_Name
 			UserPanelUser.Size       = UDim2.new(0, UserPanelUser.TextBounds.X + 2, 0, 19)
+			UserPanelTag.Text        = "#"..Player_ID
+			
 			UserName.Text            = Player_Name
 			UserTag.Text             = "#"..Player_ID
+			
 			Save_File()
 
 			UserChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
@@ -1437,7 +1443,23 @@ function Library:Window(Text)
 		CloseBtn1Corner.CornerRadius      = UDim.new(0, 4)
 		CloseBtn1Corner.Name              = "CloseBtn1Corner"
 		CloseBtn1Corner.Parent            = CloseBtn1
+		
+		CloseBtn2.MouseEnter:Connect(function()
+			TweenService:Create(
+				Close2Icon,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{ImageColor3 = Color3.fromRGB(210, 210, 210)}
+			):Play()
+		end)
 
+		CloseBtn2.MouseLeave:Connect(function()
+			TweenService:Create(
+				Close2Icon,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{ImageColor3 = Color3.fromRGB(119, 122, 127)}
+			):Play()
+		end)
+		
 		CloseBtn1.MouseButton1Click:Connect(function()
 			UserChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
 			TweenService:Create(
@@ -1474,50 +1496,10 @@ function Library:Window(Text)
 			NotificationHolder:Destroy()
 		end)
 
-		CloseBtn2.MouseEnter:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(210, 210, 210)}
-			):Play()
-		end)
-
-		CloseBtn2.MouseLeave:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(119, 122, 127)}
-			):Play()
-		end)
-
-		TagTextbox.Changed:Connect(function()
-			TagTextbox.Text = TagTextbox.Text:sub(1, 4)	
-		end)
-
-		TagTextbox:GetPropertyChangedSignal("Text"):Connect(function()
-			TagTextbox.Text = TagTextbox.Text:gsub('%D+', '')
-		end)
-
 		UsernameTextbox.Changed:Connect(function()
-			UsernameTextbox.Text = UsernameTextbox.Text:sub(1, 13)	
+			UsernameTextbox.Text = UsernameTextbox.Text:sub(1, 13)
 		end)
-
-		TagTextbox.Focused:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-			):Play()
-		end)
-
-		TagTextbox.FocusLost:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(37, 40, 43)}
-			):Play()
-		end)
-
+		
 		UsernameTextbox.Focused:Connect(function()
 			TweenService:Create(
 				TextBoxFrame,
@@ -1527,6 +1509,30 @@ function Library:Window(Text)
 		end)
 
 		UsernameTextbox.FocusLost:Connect(function()
+			TweenService:Create(
+				TextBoxFrame,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundColor3 = Color3.fromRGB(37, 40, 43)}
+			):Play()
+		end)
+		
+		TagTextbox.Changed:Connect(function()
+			TagTextbox.Text = TagTextbox.Text:sub(1, 4)
+		end)
+
+		TagTextbox:GetPropertyChangedSignal("Text"):Connect(function()
+			TagTextbox.Text = TagTextbox.Text:gsub('%D+', '')
+		end)
+		
+		TagTextbox.Focused:Connect(function()
+			TweenService:Create(
+				TextBoxFrame,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
+			):Play()
+		end)
+
+		TagTextbox.FocusLost:Connect(function()
 			TweenService:Create(
 				TextBoxFrame,
 				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
@@ -1640,7 +1646,23 @@ function Library:Window(Text)
 		AlrightCorner.CornerRadius      = UDim.new(0, 4)
 		AlrightCorner.Name              = "AlrightCorner"
 		AlrightCorner.Parent            = AlrightBtn
+		
+		AlrightBtn.MouseEnter:Connect(function()
+			TweenService:Create(
+				AlrightBtn,
+				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundColor3 = Color3.fromRGB(103,  123, 196)}
+			):Play()
+		end)
 
+		AlrightBtn.MouseLeave:Connect(function()
+			TweenService:Create(
+				AlrightBtn,
+				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
+			):Play()
+		end)
+		
 		AlrightBtn.MouseButton1Click:Connect(function()
 			TweenService:Create(
 				NotificationHolderMain,
@@ -1657,22 +1679,6 @@ function Library:Window(Text)
 
 			wait(.2)
 			NotificationHolderMain:Destroy()
-		end)
-
-		AlrightBtn.MouseEnter:Connect(function()
-			TweenService:Create(
-				AlrightBtn,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(103,  123, 196)}
-			):Play()
-		end)
-
-		AlrightBtn.MouseLeave:Connect(function()
-			TweenService:Create(
-				AlrightBtn,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-			):Play()
 		end)
 	end
 
@@ -1964,6 +1970,7 @@ function Library:Window(Text)
 					if Child.Name == "ServerFrame" then
 						Child.Visible = false
 					end
+					
 					ServerFrame.Visible = true
 				end
 
@@ -2137,7 +2144,7 @@ function Library:Window(Text)
 					if Child.Name == "ChannelHolder" then
 						Child.Visible = false
 					end
-					
+
 					ChannelHolder.Visible = true
 				end
 
@@ -2146,7 +2153,7 @@ function Library:Window(Text)
 						Child.BackgroundColor3           = Color3.fromRGB(47, 49, 54)
 						Child.ChannelBtnTitle.TextColor3 = Color3.fromRGB(114, 118, 125)
 					end
-					
+
 					ServerFrame.Visible = true
 				end
 
@@ -2192,6 +2199,14 @@ function Library:Window(Text)
 					):Play()
 				end)
 
+				Button.MouseLeave:Connect(function()
+					TweenService:Create(
+						Button,
+						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
+					):Play()
+				end)
+				
 				Button.MouseButton1Click:Connect(function()
 					pcall(Callback)
 					Button.TextSize = 0
@@ -2202,16 +2217,8 @@ function Library:Window(Text)
 						{TextSize = 14}
 					):Play()
 				end)
-
-				Button.MouseLeave:Connect(function()
-					TweenService:Create(
-						Button,
-						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-					):Play()
-				end)
-
-				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
+				
+				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
 
 			function ChannelContent:Toggle(Text, Default, Callback)
@@ -2484,7 +2491,7 @@ function Library:Window(Text)
 							0,
 							8
 						)
-					
+
 					CurrentValueFrame.Size = Position_2
 					Zip.Position           = Position
 
@@ -2511,7 +2518,7 @@ function Library:Window(Text)
 					end
 				)
 
-			UserInputService.InputChanged:Connect(
+				UserInputService.InputChanged:Connect(
 					function(Input)
 						if Dragging and Input.UserInputType == Enum.UserInputType.MouseMovement then
 							Move(Input)
@@ -2547,6 +2554,7 @@ function Library:Window(Text)
 				Seperator2.BorderSizePixel        = 0
 				Seperator2.Position               = UDim2.new(0, 0, 0, 4)
 				Seperator2.Size                   = UDim2.new(0, 401, 0, 1)
+				
 				ChannelHolder.CanvasSize          = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
 
@@ -2704,11 +2712,13 @@ function Library:Window(Text)
 						DropdownFrameMain.Visible        = true
 						DropdownFrameMainOutline.Visible = true
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73 + DropdownFrameMainOutline.AbsoluteSize.Y)
+						
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 					else
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 						DropdownFrameMain.Visible        = false
 						DropdownFrameMainOutline.Visible = false
+						
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 					end
 
@@ -2775,8 +2785,9 @@ function Library:Window(Text)
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 						DropdownFrameMain.Visible        = false
 						DropdownFrameMainOutline.Visible = false
+						
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
-						DropTog = not DropTog
+						DropTog                          = not DropTog
 					end)
 
 					DropItemHolder.CanvasSize     = UDim2.new(0,0,0,DropItemHolderLayout.AbsoluteContentSize.Y)
@@ -2785,8 +2796,6 @@ function Library:Window(Text)
 					DropdownFrameMainOutline.Size = UDim2.new(0, 396, 0, FrameSize + 10)
 				end
 
-				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
-
 				function DropFunc:Clear()
 					for Index, Child in next, DropItemHolder:GetChildren() do
 						if Child.Name == "Item" then
@@ -2794,8 +2803,7 @@ function Library:Window(Text)
 						end
 					end						
 
-					CurrentSelectedText.Text = "..."
-
+					CurrentSelectedText.Text         = "..."
 					ItemCount                        = 0
 					FrameSize                        = 0
 					DropItemHolder.Size              = UDim2.new(0, 385, 0, 0)
@@ -2804,6 +2812,7 @@ function Library:Window(Text)
 					Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 					DropdownFrameMain.Visible        = false
 					DropdownFrameMainOutline.Visible = false
+					
 					ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 				end
 
@@ -2866,6 +2875,7 @@ function Library:Window(Text)
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 						DropdownFrameMain.Visible        = false
 						DropdownFrameMainOutline.Visible = false
+						
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 						DropTog                          = not DropTog
 					end)
@@ -2875,7 +2885,8 @@ function Library:Window(Text)
 					DropdownFrameMain.Size        = UDim2.new(0, 392, 0, FrameSize + 6)
 					DropdownFrameMainOutline.Size = UDim2.new(0, 396, 0, FrameSize + 10)
 				end
-
+				
+				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 				return DropFunc
 			end
 
@@ -2978,7 +2989,7 @@ function Library:Window(Text)
 				HueCorner.CornerRadius                      = UDim.new(0, 3)
 				HueCorner.Name                              = "HueCorner"
 				HueCorner.Parent                            = Hue
-
+				
 				HueGradient.Color                           = ColorSequence.new {
 					ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)),
 					ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)),
@@ -2988,7 +2999,6 @@ function Library:Window(Text)
 					ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)),
 					ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))
 				}
-
 				HueGradient.Rotation                = 270
 				HueGradient.Name                    = "HueGradient"
 				HueGradient.Parent                  = Hue
@@ -3019,17 +3029,17 @@ function Library:Window(Text)
 					pcall(Callback, PresetClr.BackgroundColor3)
 				end
 
-				ColourH =
+				ColourH                    =
 					1 -
 					(math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
-						Hue.AbsoluteSize.Y)
-				ColourS =
+					Hue.AbsoluteSize.Y)
+				ColourS                    =
 					(math.clamp(ColourSelection.AbsolutePosition.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
-						Colour.AbsoluteSize.X)
-				ColourV =
+					Colour.AbsoluteSize.X)
+				ColourV                    =
 					1 -
 					(math.clamp(ColourSelection.AbsolutePosition.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
-						Colour.AbsoluteSize.Y)
+					Colour.AbsoluteSize.Y)
 
 				PresetClr.BackgroundColor3 = Preset
 				Colour.BackgroundColor3    = Preset
@@ -3045,16 +3055,16 @@ function Library:Window(Text)
 							ColourInput =
 								RunService.RenderStepped:Connect(
 									function()
-										local ColorX =
+										local ColorX             =
 											(math.clamp(Mouse.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
 											Colour.AbsoluteSize.X)
-										local ColorY =
+										local ColorY             =
 											(math.clamp(Mouse.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
 											Colour.AbsoluteSize.Y)
 
 										ColourSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
-										ColourS = ColorX
-										ColourV = 1 - ColorY
+										ColourS                  = ColorX
+										ColourV                  = 1 - ColorY
 
 										UpdateColourPicker(true)
 									end
@@ -3083,12 +3093,12 @@ function Library:Window(Text)
 							HueInput =
 								RunService.RenderStepped:Connect(
 									function()
-										local HueY =
+										local HueY            =
 											(math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
 											Hue.AbsoluteSize.Y)
 
 										HueSelection.Position = UDim2.new(0.48, 0, HueY, 0)
-										ColourH = 1 - HueY
+										ColourH               = 1 - HueY
 
 										UpdateColourPicker(true)
 									end
@@ -3172,7 +3182,7 @@ function Library:Window(Text)
 				TextBox.Text                           = ""
 				TextBox.TextColor3                     = Color3.fromRGB(193, 195, 197)
 				TextBox.TextSize                       = 14.000
-				TextBox.TextXAlignment = Enum.TextXAlignment.Left
+				TextBox.TextXAlignment                 = Enum.TextXAlignment.Left
 
 				TextBox.Focused:Connect(function()
 					TweenService:Create(
@@ -3231,13 +3241,12 @@ function Library:Window(Text)
 				LabelTitle.TextColor3             = Color3.fromRGB(127, 131, 137)
 				LabelTitle.TextSize               = 14.000
 				LabelTitle.TextXAlignment         = Enum.TextXAlignment.Left
-				
-				ChannelHolder.CanvasSize          = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
-				
+
 				function LabelFunc:Change(Value)
 					LabelTitle.Text = Value
 				end
 				
+				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 				return LabelFunc
 			end
 
@@ -3293,7 +3302,7 @@ function Library:Window(Text)
 					end
 				end)
 
-				UserInputService.InputBegan:connect(
+				UserInputService.InputBegan:Connect(
 					function(Current, Processed)
 						if not Processed then
 							if Current.KeyCode.Name == Key then
