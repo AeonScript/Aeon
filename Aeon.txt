@@ -2111,11 +2111,14 @@ function Library:Window(Text)
 				KeybindText.TextColor3              = Color3.fromRGB(127, 131, 137)
 				KeybindText.TextSize                = 14.000
 				KeybindText.TextXAlignment          = Enum.TextXAlignment.Right
-
+				
+				local Binding                       = false
+				
 				Keybind.MouseButton1Click:Connect(function()
 					KeybindText.Text = "..."
+					Binding          = true
+					
 					local InputWait  = UserInputService.InputBegan:wait()
-
 					if InputWait.KeyCode.Name ~= "Unknown" then
 						KeybindText.Text = InputWait.KeyCode.Name
 						Key              = InputWait.KeyCode.Name
@@ -2126,7 +2129,11 @@ function Library:Window(Text)
 					function(Current, Processed)
 						if not Processed then
 							if Current.KeyCode.Name == Key then
-								pcall(Callback)
+								if Binding == true then
+									Binding = not Binding
+								else
+									pcall(Callback)
+								end
 							end
 						end
 					end
