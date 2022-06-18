@@ -2920,7 +2920,7 @@ function Library:Window(Text)
 				ColourPickerTitle.Position                  = UDim2.new(0, 5, 0, 0)
 				ColourPickerTitle.Size                      = UDim2.new(0, 200, 0, 29)
 				ColourPickerTitle.Font                      = Enum.Font.Gotham
-				ColourPickerTitle.Text                      = "ColourPicker"
+				ColourPickerTitle.Text                      = Text
 				ColourPickerTitle.TextColor3                = Color3.fromRGB(127, 131, 137)
 				ColourPickerTitle.TextSize                  = 14.000
 				ColourPickerTitle.TextXAlignment            = Enum.TextXAlignment.Left
