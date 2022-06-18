@@ -9,24 +9,18 @@ local LocalPlayer      = Players.LocalPlayer
 local Mouse            = LocalPlayer:GetMouse()
 
 local Player_File      = {}
-local Player_Display
-local Player_Name
-local Player_ID
+local Player_Display   = "https://www.roblox.com/headshot-thumbnail/image?userId="..LocalPlayer.UserId.."&width=420&height=420&format=png"
+local Player_Name      = LocalPlayer.Name
+local Player_ID        = string.sub(tostring(LocalPlayer.UserId), 1, 4)
 
 pcall(function()
 	Player_File = HttpService:JSONDecode(readfile("Aeon.txt"))
 end)
 
-Player_Display = Player_File["Player_Display"] or "https://www.roblox.com/headshot-thumbnail/image?userId="..LocalPlayer.UserId.."&width=420&height=420&format=png"
-Player_Name    = Player_File["Player_Name"] or LocalPlayer.Name
-Player_ID      = Player_File["Player_ID"] or string.sub(tostring(LocalPlayer.UserId), 1, 4)
-
-local function Save_File()
-	Player_File["Player_Display"] = Player_Display
-	Player_File["Player_Name"]    = Player_Name
-	Player_File["Player_ID"]      = Player_ID
-	writefile("Aeon.txt", HttpService:JSONEncode(Player_File))
-end
+local Discord          = Instance.new("ScreenGui")
+Discord.Name           = "Discord"
+Discord.Parent         = game.CoreGui
+Discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 local function Draggable(TopBarObject, Object)
 	local Dragging      = nil
@@ -85,16 +79,16 @@ local function Draggable(TopBarObject, Object)
 	)
 end
 
-local Discord          = Instance.new("ScreenGui")
-Discord.Name           = "Discord"
-Discord.Parent         = game.CoreGui
-Discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+function Library:Save(Parameter, Value)
+	Player_File[Parameter] = Value
+	writefile("Aeon.txt", HttpService:JSONEncode(Player_File))
+end
 
 function Library:Window(Text)
 	local CurrentServerToggled              = ""
+	local Opened                            = true
 	local Minimised                         = false
 	local FS                                = false
-	local SettingsOpened                    = false
 
 	local MainFrame                         = Instance.new("Frame")
 	local TopFrame                          = Instance.new("Frame")
@@ -305,6 +299,7 @@ function Library:Window(Text)
 	CloseBtn.MouseButton1Click:Connect(
 		function()
 			MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+			Opened = not Opened
 		end
 	)
 
@@ -343,7 +338,29 @@ function Library:Window(Text)
 			Minimised = not Minimised
 		end
 	)
+	
+	function Library:Open()
+		if Opened == false then
+			MainFrame:TweenSize(
+				UDim2.new(0, 681, 0, 396),
+				Enum.EasingDirection.Out,
+				Enum.EasingStyle.Quart,
+				.3,
+				true
+			)
+		else
+			MainFrame:TweenSize(
+				UDim2.new(0, 0, 0, 0),
+				Enum.EasingDirection.Out,
+				Enum.EasingStyle.Quart,
+				.3,
+				true
+			)
+		end
 
+		Opened = not Opened
+	end
+	
 	function Library:Notification(TitleText, DescText, BtnText)
 		local NotificationHolderMain                  = Instance.new("TextButton")
 		local Notification                            = Instance.new("Frame")
@@ -1604,7 +1621,7 @@ function Library:Window(Text)
 						if Child.Name == "Item" then
 							Child:Destroy()
 						end
-					end						
+					end
 
 					CurrentSelectedText.Text         = "..."
 					ItemCount                        = 0
@@ -1835,17 +1852,17 @@ function Library:Window(Text)
 				ColourH                    =
 					1 -
 					(math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
-						Hue.AbsoluteSize.Y)
+					Hue.AbsoluteSize.Y)
 				ColourS                    =
 					(math.clamp(ColourSelection.AbsolutePosition.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
-						Colour.AbsoluteSize.X)
+					Colour.AbsoluteSize.X)
 				ColourV                    =
 					1 -
 					(math.clamp(ColourSelection.AbsolutePosition.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
-						Colour.AbsoluteSize.Y)
-
-				PresetClr.BackgroundColor3 = Preset
+					Colour.AbsoluteSize.Y)
+				
 				Colour.BackgroundColor3    = Preset
+				PresetClr.BackgroundColor3 = Preset
 				pcall(Callback, PresetClr.BackgroundColor3)
 
 				Colour.InputBegan:Connect(
@@ -1859,17 +1876,17 @@ function Library:Window(Text)
 								RunService.RenderStepped:Connect(
 									function()
 										local ColorX             =
-										(math.clamp(Mouse.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
+											(math.clamp(Mouse.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
 											Colour.AbsoluteSize.X)
 										local ColorY             =
-										(math.clamp(Mouse.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
+											(math.clamp(Mouse.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
 											Colour.AbsoluteSize.Y)
 
 										ColourSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
 										ColourS                  = ColorX
 										ColourV                  = 1 - ColorY
 
-										UpdateColourPicker(true)
+										UpdateColourPicker()
 									end
 								)
 						end
@@ -1897,13 +1914,13 @@ function Library:Window(Text)
 								RunService.RenderStepped:Connect(
 									function()
 										local HueY            =
-										(math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
+											(math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
 											Hue.AbsoluteSize.Y)
 
 										HueSelection.Position = UDim2.new(0.48, 0, HueY, 0)
 										ColourH               = 1 - HueY
 
-										UpdateColourPicker(true)
+										UpdateColourPicker()
 									end
 								)
 						end
