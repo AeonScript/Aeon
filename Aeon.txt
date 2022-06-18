@@ -301,13 +301,13 @@ function Library:Window(Text)
 			CloseBtn.BackgroundColor3 = Color3.fromRGB(32, 34, 37)
 		end
 	)
-	
+
 	CloseBtn.MouseButton1Click:Connect(
 		function()
 			MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
 		end
 	)
-	
+
 	MinimiseBtn.MouseEnter:Connect(
 		function()
 			MinimiseBtn.BackgroundColor3 = Color3.fromRGB(40, 43, 46)
@@ -343,1203 +343,6 @@ function Library:Window(Text)
 			Minimised = not Minimised
 		end
 	)
-
-	local SettingsOpenBtn                       = Instance.new("TextButton")
-	local SettingsOpenBtnIco                    = Instance.new("ImageLabel")
-
-	SettingsOpenBtn.Name                        = "SettingsOpenBtn"
-	SettingsOpenBtn.Parent                      = Userpad
-	SettingsOpenBtn.BackgroundColor3            = Color3.fromRGB(53, 56, 62)
-	SettingsOpenBtn.BackgroundTransparency      = 1.000
-	SettingsOpenBtn.Position                    = UDim2.new(0.849161983, 0, 0.279069781, 0)
-	SettingsOpenBtn.Size                        = UDim2.new(0, 18, 0, 18)
-	SettingsOpenBtn.Font                        = Enum.Font.SourceSans
-	SettingsOpenBtn.Text                        = ""
-	SettingsOpenBtn.TextColor3                  = Color3.fromRGB(0, 0, 0)
-	SettingsOpenBtn.TextSize                    = 14.000
-
-	SettingsOpenBtnIco.Name                     = "SettingsOpenBtnIco"
-	SettingsOpenBtnIco.Parent                   = SettingsOpenBtn
-	SettingsOpenBtnIco.BackgroundColor3         = Color3.fromRGB(220, 220, 220)
-	SettingsOpenBtnIco.BackgroundTransparency   = 1.000
-	SettingsOpenBtnIco.Size                     = UDim2.new(0, 18, 0, 18)
-	SettingsOpenBtnIco.Image                    = "http://www.roblox.com/asset/?id=6031280882"
-	SettingsOpenBtnIco.ImageColor3              = Color3.fromRGB(220, 220, 220)
-
-	local SettingsFrame                         = Instance.new("Frame")
-	local Settings                              = Instance.new("Frame")
-	local SettingsHolder                        = Instance.new("Frame")
-	local CloseSettingsBtn                      = Instance.new("TextButton")
-	local CloseSettingsBtnCorner                = Instance.new("UICorner")
-	local CloseSettingsBtnCircle                = Instance.new("Frame")
-	local CloseSettingsBtnCircleCorner          = Instance.new("UICorner")
-	local CloseSettingsBtnIcon                  = Instance.new("ImageLabel")
-	local TextLabel                             = Instance.new("TextLabel")
-	local UserPanel                             = Instance.new("Frame")
-	local UserSettingsPad                       = Instance.new("Frame")
-	local UserSettingsPadCorner                 = Instance.new("UICorner")
-	local UsernameText                          = Instance.new("TextLabel")
-	local UserSettingsPadUserTag                = Instance.new("Frame")
-	local UserSettingsPadUser                   = Instance.new("TextLabel")
-	local UserSettingsPadUserTagLayout          = Instance.new("UIListLayout")
-	local UserSettingsPadTag                    = Instance.new("TextLabel")
-	local EditBtn                               = Instance.new("TextButton")
-	local EditBtnCorner                         = Instance.new("UICorner")
-	local UserPanelUserIcon                     = Instance.new("TextButton")
-	local UserPanelUserImage                    = Instance.new("ImageLabel")
-	local UserPanelUserCircle                   = Instance.new("ImageLabel")
-	local BlackFrame                            = Instance.new("Frame")
-	local BlackFrameCorner                      = Instance.new("UICorner")
-	local ChangeAvatarText                      = Instance.new("TextLabel")
-	local SearchIcoFrame                        = Instance.new("Frame")
-	local SearchIcoFrameCorner                  = Instance.new("UICorner")
-	local SearchIco                             = Instance.new("ImageLabel")
-	local UserPanelUserTag                      = Instance.new("Frame")
-	local UserPanelUser                         = Instance.new("TextLabel")
-	local UserPanelUserTagLayout                = Instance.new("UIListLayout")
-	local UserPanelTag                          = Instance.new("TextLabel")
-	local UserPanelCorner                       = Instance.new("UICorner")
-	local LeftFrame                             = Instance.new("Frame")
-	local MyAccountBtn                          = Instance.new("TextButton")
-	local MyAccountBtnCorner                    = Instance.new("UICorner")
-	local MyAccountBtnTitle                     = Instance.new("TextLabel")
-	local SettingsTitle                         = Instance.new("TextLabel")
-	local DiscordInfo                           = Instance.new("TextLabel")
-	local CurrentSettingOpen                    = Instance.new("TextLabel")
-
-	SettingsFrame.Name                          = "SettingsFrame"
-	SettingsFrame.Parent                        = MainFrame
-	SettingsFrame.BackgroundColor3              = Color3.fromRGB(47, 49, 54)
-	SettingsFrame.BackgroundTransparency        = 1.000
-	SettingsFrame.Size                          = UDim2.new(0, 681, 0, 396)
-	SettingsFrame.Visible                       = false
-
-	Settings.Name                               = "Settings"
-	Settings.Parent                             = SettingsFrame
-	Settings.BackgroundColor3                   = Color3.fromRGB(54, 57, 63)
-	Settings.BorderSizePixel                    = 0
-	Settings.Position                           = UDim2.new(0, 0, 0.0530303046, 0)
-	Settings.Size                               = UDim2.new(0, 681, 0, 375)
-
-	SettingsHolder.Name                         = "SettingsHolder"
-	SettingsHolder.Parent                       = Settings
-	SettingsHolder.AnchorPoint                  = Vector2.new(0.5, 0.5)
-	SettingsHolder.BackgroundColor3             = Color3.fromRGB(255, 255, 255)
-	SettingsHolder.BackgroundTransparency       = 1.000
-	SettingsHolder.ClipsDescendants             = true
-	SettingsHolder.Position                     = UDim2.new(0.49926579, 0, 0.498666674, 0)
-	SettingsHolder.Size                         = UDim2.new(0, 0, 0, 0)
-
-	CloseSettingsBtn.Name                       = "CloseSettingsBtn"
-	CloseSettingsBtn.Parent                     = SettingsHolder
-	CloseSettingsBtn.AnchorPoint                = Vector2.new(0.5, 0.5)
-	CloseSettingsBtn.BackgroundColor3           = Color3.fromRGB(113, 117, 123)
-	CloseSettingsBtn.Position                   = UDim2.new(0.952967286, 0, 0.0853333324, 0)
-	CloseSettingsBtn.Selectable                 = false
-	CloseSettingsBtn.Size                       = UDim2.new(0, 30, 0, 30)
-	CloseSettingsBtn.AutoButtonColor            = false
-	CloseSettingsBtn.Font                       = Enum.Font.SourceSans
-	CloseSettingsBtn.Text                       = ""
-	CloseSettingsBtn.TextColor3                 = Color3.fromRGB(0, 0, 0)
-	CloseSettingsBtn.TextSize                   = 14.000
-
-	CloseSettingsBtnCorner.CornerRadius         = UDim.new(1, 0)
-	CloseSettingsBtnCorner.Name                 = "CloseSettingsBtnCorner"
-	CloseSettingsBtnCorner.Parent               = CloseSettingsBtn
-
-	CloseSettingsBtnCircle.Name                 = "CloseSettingsBtnCircle"
-	CloseSettingsBtnCircle.Parent               = CloseSettingsBtn
-	CloseSettingsBtnCircle.BackgroundColor3     = Color3.fromRGB(54, 57, 63)
-	CloseSettingsBtnCircle.Position             = UDim2.new(0.0879999995, 0, 0.118000001, 0)
-	CloseSettingsBtnCircle.Size                 = UDim2.new(0, 24, 0, 24)
-
-	CloseSettingsBtnCircleCorner.CornerRadius   = UDim.new(1, 0)
-	CloseSettingsBtnCircleCorner.Name           = "CloseSettingsBtnCircleCorner"
-	CloseSettingsBtnCircleCorner.Parent         = CloseSettingsBtnCircle
-
-	CloseSettingsBtnIcon.Name                   = "CloseSettingsBtnIcon"
-	CloseSettingsBtnIcon.Parent                 = CloseSettingsBtnCircle
-	CloseSettingsBtnIcon.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-	CloseSettingsBtnIcon.BackgroundTransparency = 1.000
-	CloseSettingsBtnIcon.Position               = UDim2.new(0, 2, 0, 2)
-	CloseSettingsBtnIcon.Size                   = UDim2.new(0, 19, 0, 19)
-	CloseSettingsBtnIcon.Image                  = "http://www.roblox.com/asset/?id=6035047409"
-	CloseSettingsBtnIcon.ImageColor3            = Color3.fromRGB(222, 222, 222)
-
-	CloseSettingsBtn.MouseEnter:Connect(function()
-		CloseSettingsBtnCircle.BackgroundColor3 = Color3.fromRGB(72, 76, 82)
-	end)
-
-	CloseSettingsBtn.MouseLeave:Connect(function()
-		CloseSettingsBtnCircle.BackgroundColor3 = Color3.fromRGB(54, 57, 63)
-	end)
-	
-	CloseSettingsBtn.MouseButton1Click:Connect(function()
-		SettingsOpened           = false
-		TopFrameHolder.Visible   = true
-		ServersHoldFrame.Visible = true
-
-		SettingsHolder:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-		TweenService:Create(
-			Settings,
-			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundTransparency = 1}
-		):Play()
-
-		for Index, Child in next, SettingsHolder:GetChildren() do
-			TweenService:Create(
-				Child,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-		end
-
-		wait(.3)
-		SettingsFrame.Visible = false
-	end)
-	
-	UserInputService.InputBegan:Connect(
-		function(Current, Processed)
-			if Current.KeyCode == Enum.KeyCode.RightControl then
-				if SettingsOpened == true then
-					SettingsOpened           = false
-					TopFrameHolder.Visible   = true
-					ServersHoldFrame.Visible = true
-
-					SettingsHolder:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-					TweenService:Create(
-						Settings,
-						TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundTransparency = 1}
-					):Play()
-
-					for Index, Child in next, SettingsHolder:GetChildren() do
-						TweenService:Create(
-							Child,
-							TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-							{BackgroundTransparency = 1}
-						):Play()
-					end
-
-					wait(.3)
-					SettingsFrame.Visible = false
-				end
-			end
-		end
-	)
-
-	TextLabel.Parent                              = CloseSettingsBtn
-	TextLabel.BackgroundColor3                    = Color3.fromRGB(255, 255, 255)
-	TextLabel.BackgroundTransparency              = 1.000
-	TextLabel.Position                            = UDim2.new(-0.0666666701, 0, 1.06666672, 0)
-	TextLabel.Size                                = UDim2.new(0, 34, 0, 22)
-	TextLabel.Font                                = Enum.Font.GothamSemibold
-	TextLabel.Text                                = "RightCtrl"
-	TextLabel.TextColor3                          = Color3.fromRGB(113, 117, 123)
-	TextLabel.TextSize                            = 11.000
-
-	UserPanel.Name                                = "UserPanel"
-	UserPanel.Parent                              = SettingsHolder
-	UserPanel.BackgroundColor3                    = Color3.fromRGB(47, 49, 54)
-	UserPanel.Position                            = UDim2.new(0.365638763, 0, 0.130666673, 0)
-	UserPanel.Size                                = UDim2.new(0, 362, 0, 164)
-
-	UserSettingsPad.Name                          = "UserSettingsPad"
-	UserSettingsPad.Parent                        = UserPanel
-	UserSettingsPad.BackgroundColor3              = Color3.fromRGB(54, 57, 63)
-	UserSettingsPad.Position                      = UDim2.new(0.0331491716, 0, 0.568140388, 0)
-	UserSettingsPad.Size                          = UDim2.new(0, 337, 0, 56)
-
-	UserSettingsPadCorner.Name                    = "UserSettingsPadCorner"
-	UserSettingsPadCorner.Parent                  = UserSettingsPad
-
-	UsernameText.Name                             = "UsernameText"
-	UsernameText.Parent                           = UserSettingsPad
-	UsernameText.BackgroundColor3                 = Color3.fromRGB(255, 255, 255)
-	UsernameText.BackgroundTransparency           = 1.000
-	UsernameText.Position                         = UDim2.new(0.0419999994, 0, 0.154714286, 0)
-	UsernameText.Size                             = UDim2.new(0, 65, 0, 19)
-	UsernameText.Font                             = Enum.Font.GothamBold
-	UsernameText.Text                             = "USERNAME"
-	UsernameText.TextColor3                       = Color3.fromRGB(126, 130, 136)
-	UsernameText.TextSize                         = 11.000
-	UsernameText.TextXAlignment                   = Enum.TextXAlignment.Left
-
-	UserSettingsPadUserTag.Name                   = "UserSettingsPadUserTag"
-	UserSettingsPadUserTag.Parent                 = UserSettingsPad
-	UserSettingsPadUserTag.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-	UserSettingsPadUserTag.BackgroundTransparency = 1.000
-	UserSettingsPadUserTag.Position               = UDim2.new(0.0419999994, 0, 0.493999988, 0)
-	UserSettingsPadUserTag.Size                   = UDim2.new(0, 65, 0, 19)
-
-	UserSettingsPadUser.Name                      = "UserSettingsPadUser"
-	UserSettingsPadUser.Parent                    = UserSettingsPadUserTag
-	UserSettingsPadUser.BackgroundColor3          = Color3.fromRGB(255, 255, 255)
-	UserSettingsPadUser.BackgroundTransparency    = 1.000
-	UserSettingsPadUser.Font                      = Enum.Font.Gotham
-	UserSettingsPadUser.TextColor3                = Color3.fromRGB(255, 255, 255)
-	UserSettingsPadUser.TextSize                  = 13.000
-	UserSettingsPadUser.TextXAlignment            = Enum.TextXAlignment.Left
-	UserSettingsPadUser.Text                      = Player_Name
-	UserSettingsPadUser.Size                      = UDim2.new(0, UserSettingsPadUser.TextBounds.X + 2, 0, 19)
-
-	UserSettingsPadUserTagLayout.Name             = "UserSettingsPadUserTagLayout"
-	UserSettingsPadUserTagLayout.Parent           = UserSettingsPadUserTag
-	UserSettingsPadUserTagLayout.FillDirection    = Enum.FillDirection.Horizontal
-	UserSettingsPadUserTagLayout.SortOrder        = Enum.SortOrder.LayoutOrder
-
-	UserSettingsPadTag.Name                       = "UserSettingsPadTag"
-	UserSettingsPadTag.Parent                     = UserSettingsPadUserTag
-	UserSettingsPadTag.BackgroundColor3           = Color3.fromRGB(255, 255, 255)
-	UserSettingsPadTag.BackgroundTransparency     = 1.000
-	UserSettingsPadTag.Position                   = UDim2.new(0.0419999994, 0, 0.493999988, 0)
-	UserSettingsPadTag.Size                       = UDim2.new(0, 65, 0, 19)
-	UserSettingsPadTag.Font                       = Enum.Font.Gotham
-	UserSettingsPadTag.Text                       = "#"..Player_ID
-	UserSettingsPadTag.TextColor3                 = Color3.fromRGB(184, 186, 189)
-	UserSettingsPadTag.TextSize                   = 13.000
-	UserSettingsPadTag.TextXAlignment             = Enum.TextXAlignment.Left
-
-	EditBtn.Name                                  = "EditBtn"
-	EditBtn.Parent                                = UserSettingsPad
-	EditBtn.BackgroundColor3                      = Color3.fromRGB(116, 127, 141)
-	EditBtn.Position                              = UDim2.new(0.797671914, 0, 0.232142866, 0)
-	EditBtn.Size                                  = UDim2.new(0, 55, 0, 30)
-	EditBtn.Font                                  = Enum.Font.Gotham
-	EditBtn.Text                                  = "Edit"
-	EditBtn.TextColor3                            = Color3.fromRGB(255, 255, 255)
-	EditBtn.TextSize                              = 14.000
-	EditBtn.AutoButtonColor                       = false
-
-	EditBtn.MouseEnter:Connect(function()
-		TweenService:Create(
-			EditBtn,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundColor3 = Color3.fromRGB(104, 114, 127)}
-		):Play()
-	end)
-
-	EditBtn.MouseLeave:Connect(function()
-		TweenService:Create(
-			EditBtn,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundColor3 = Color3.fromRGB(116, 127, 141)}
-		):Play()
-	end)
-
-	EditBtnCorner.CornerRadius                 = UDim.new(0, 3)
-	EditBtnCorner.Name                         = "EditBtnCorner"
-	EditBtnCorner.Parent                       = EditBtn
-
-	UserPanelUserIcon.Name                     = "UserPanelUserIcon"
-	UserPanelUserIcon.Parent                   = UserPanel
-	UserPanelUserIcon.BackgroundColor3         = Color3.fromRGB(31, 33, 36)
-	UserPanelUserIcon.BorderSizePixel          = 0
-	UserPanelUserIcon.Position                 = UDim2.new(0.0340000018, 0, 0.074000001, 0)
-	UserPanelUserIcon.Size                     = UDim2.new(0, 71, 0, 71)
-	UserPanelUserIcon.AutoButtonColor          = false
-	UserPanelUserIcon.Text                     = ""
-
-	UserPanelUserImage.Name                    = "UserPanelUserImage"
-	UserPanelUserImage.Parent                  = UserPanelUserIcon
-	UserPanelUserImage.BackgroundColor3        = Color3.fromRGB(255, 255, 255)
-	UserPanelUserImage.BackgroundTransparency  = 1.000
-	UserPanelUserImage.Size                    = UDim2.new(0, 71, 0, 71)
-	UserPanelUserImage.Image                   = Player_Display
-
-	UserPanelUserCircle.Name                   = "UserPanelUserCircle"
-	UserPanelUserCircle.Parent                 = UserPanelUserImage
-	UserPanelUserCircle.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-	UserPanelUserCircle.BackgroundTransparency = 1.000
-	UserPanelUserCircle.Size                   = UDim2.new(0, 71, 0, 71)
-	UserPanelUserCircle.Image                  = "rbxassetid://4031889928"
-	UserPanelUserCircle.ImageColor3            = Color3.fromRGB(47, 49, 54)
-
-	BlackFrame.Name                            = "BlackFrame"
-	BlackFrame.Parent                          = UserPanelUserIcon
-	BlackFrame.BackgroundColor3                = Color3.fromRGB(0, 0, 0)
-	BlackFrame.BackgroundTransparency          = 0.400
-	BlackFrame.BorderSizePixel                 = 0
-	BlackFrame.Size                            = UDim2.new(0, 71, 0, 71)
-	BlackFrame.Visible                         = false
-
-	BlackFrameCorner.CornerRadius              = UDim.new(1, 8)
-	BlackFrameCorner.Name                      = "BlackFrameCorner"
-	BlackFrameCorner.Parent                    = BlackFrame
-
-	ChangeAvatarText.Name                      = "ChangeAvatarText"
-	ChangeAvatarText.Parent                    = BlackFrame
-	ChangeAvatarText.BackgroundColor3          = Color3.fromRGB(255, 255, 255)
-	ChangeAvatarText.BackgroundTransparency    = 1.000
-	ChangeAvatarText.Size                      = UDim2.new(0, 71, 0, 71)
-	ChangeAvatarText.Font                      = Enum.Font.GothamBold
-	ChangeAvatarText.Text                      = "CHANGE AVATAR"
-	ChangeAvatarText.TextColor3                = Color3.fromRGB(255, 255, 255)
-	ChangeAvatarText.TextSize                  = 11.000
-	ChangeAvatarText.TextWrapped               = true
-
-	SearchIcoFrame.Name                        = "SearchIcoFrame"
-	SearchIcoFrame.Parent                      = UserPanelUserIcon
-	SearchIcoFrame.BackgroundColor3            = Color3.fromRGB(222, 222, 222)
-	SearchIcoFrame.Position                    = UDim2.new(0.657999992, 0, 0, 0)
-	SearchIcoFrame.Size                        = UDim2.new(0, 20, 0, 20)
-
-	SearchIcoFrameCorner.CornerRadius          = UDim.new(1, 8)
-	SearchIcoFrameCorner.Name                  = "SearchIcoFrameCorner"
-	SearchIcoFrameCorner.Parent                = SearchIcoFrame
-
-	SearchIco.Name                             = "SearchIco"
-	SearchIco.Parent                           = SearchIcoFrame
-	SearchIco.BackgroundColor3                 = Color3.fromRGB(255, 255, 255)
-	SearchIco.BackgroundTransparency           = 1.000
-	SearchIco.Position                         = UDim2.new(0.150000006, 0, 0.100000001, 0)
-	SearchIco.Size                             = UDim2.new(0, 15, 0, 15)
-	SearchIco.Image                            = "http://www.roblox.com/asset/?id=6034407084"
-	SearchIco.ImageColor3                      = Color3.fromRGB(114, 118, 125)
-
-	UserPanelUserIcon.MouseEnter:Connect(function()
-		BlackFrame.Visible = true
-	end)
-
-	UserPanelUserIcon.MouseLeave:Connect(function()
-		BlackFrame.Visible = false
-	end)
-
-	UserPanelUserIcon.MouseButton1Click:Connect(function()
-		local NotificationHolder                  = Instance.new("TextButton")
-		NotificationHolder.Name                   = "NotificationHolder"
-		NotificationHolder.Parent                 = SettingsHolder
-		NotificationHolder.BackgroundColor3       = Color3.fromRGB(22, 22, 22)
-		NotificationHolder.Position               = UDim2.new(-0.00881057233, 0, -0.00266666664, 0)
-		NotificationHolder.Size                   = UDim2.new(0, 687, 0, 375)
-		NotificationHolder.AutoButtonColor        = false
-		NotificationHolder.Font                   = Enum.Font.SourceSans
-		NotificationHolder.Text                   = ""
-		NotificationHolder.TextColor3             = Color3.fromRGB(0, 0, 0)
-		NotificationHolder.TextSize               = 14.000
-		NotificationHolder.BackgroundTransparency = 1
-		NotificationHolder.Visible                = true
-
-		TweenService:Create(
-			NotificationHolder,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundTransparency = 0.2}
-		):Play()
-
-		local AvatarChange                  = Instance.new("Frame")
-		local UserChangeCorner              = Instance.new("UICorner")
-		local UnderBar                      = Instance.new("Frame")
-		local UnderBarCorner                = Instance.new("UICorner")
-		local UnderBarFrame                 = Instance.new("Frame")
-		local Text1                         = Instance.new("TextLabel")
-		local Text2                         = Instance.new("TextLabel")
-		local TextBoxFrame                  = Instance.new("Frame")
-		local TextBoxFrameCorner            = Instance.new("UICorner")
-		local TextBoxFrame1                 = Instance.new("Frame")
-		local TextBoxFrame1Corner           = Instance.new("UICorner")
-		local AvatarTextbox                 = Instance.new("TextBox")
-		local ChangeBtn                     = Instance.new("TextButton")
-		local ChangeCorner                  = Instance.new("UICorner")
-		local CloseBtn2                     = Instance.new("TextButton")
-		local Close2Icon                    = Instance.new("ImageLabel")
-		local CloseBtn1                     = Instance.new("TextButton")
-		local CloseBtn1Corner               = Instance.new("UICorner")
-		local ResetBtn                      = Instance.new("TextButton")
-		local ResetCorner                   = Instance.new("UICorner")
-
-		AvatarChange.Name                   = "AvatarChange"
-		AvatarChange.Parent                 = NotificationHolder
-		AvatarChange.AnchorPoint            = Vector2.new(0.5, 0.5)
-		AvatarChange.BackgroundColor3       = Color3.fromRGB(54, 57, 63)
-		AvatarChange.ClipsDescendants       = true
-		AvatarChange.Position               = UDim2.new(0.513071597, 0, 0.4746176, 0)
-		AvatarChange.Size                   = UDim2.new(0, 0, 0, 0)
-		AvatarChange.BackgroundTransparency = 1
-
-		AvatarChange:TweenSize(UDim2.new(0, 346, 0, 198), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-		TweenService:Create(
-			AvatarChange,
-			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundTransparency = 0}
-		):Play()
-
-		UserChangeCorner.CornerRadius        = UDim.new(0, 5)
-		UserChangeCorner.Name                = "UserChangeCorner"
-		UserChangeCorner.Parent              = AvatarChange
-
-		UnderBar.Name                        = "UnderBar"
-		UnderBar.Parent                      = AvatarChange
-		UnderBar.BackgroundColor3            = Color3.fromRGB(47, 49, 54)
-		UnderBar.Position                    = UDim2.new(-0.000297061284, 0, 0.945048928, 0)
-		UnderBar.Size                        = UDim2.new(0, 346, 0, 13)
-
-		UnderBarCorner.CornerRadius          = UDim.new(0, 5)
-		UnderBarCorner.Name                  = "UnderBarCorner"
-		UnderBarCorner.Parent                = UnderBar
-
-		UnderBarFrame.Name                   = "UnderBarFrame"
-		UnderBarFrame.Parent                 = UnderBar
-		UnderBarFrame.BackgroundColor3       = Color3.fromRGB(47, 49, 54)
-		UnderBarFrame.BorderSizePixel        = 0
-		UnderBarFrame.Position               = UDim2.new(-0.000297061284, 0, -2.53846145, 0)
-		UnderBarFrame.Size                   = UDim2.new(0, 346, 0, 39)
-
-		Text1.Name                           = "Text1"
-		Text1.Parent                         = AvatarChange
-		Text1.BackgroundColor3               = Color3.fromRGB(255, 255, 255)
-		Text1.BackgroundTransparency         = 1.000
-		Text1.Position                       = UDim2.new(-0.000594122568, 0, 0.0202020202, 0)
-		Text1.Size                           = UDim2.new(0, 346, 0, 68)
-		Text1.Font                           = Enum.Font.GothamSemibold
-		Text1.Text                           = "Avatar"
-		Text1.TextColor3                     = Color3.fromRGB(255, 255, 255)
-		Text1.TextSize                       = 20.000
-
-		Text2.Name                           = "Text2"
-		Text2.Parent                         = AvatarChange
-		Text2.BackgroundColor3               = Color3.fromRGB(255, 255, 255)
-		Text2.BackgroundTransparency         = 1.000
-		Text2.Position                       = UDim2.new(-0.000594122568, 0, 0.141587839, 0)
-		Text2.Size                           = UDim2.new(0, 346, 0, 63)
-		Text2.Font                           = Enum.Font.Gotham
-		Text2.Text                           = "DECAL LINK"
-		Text2.TextColor3                     = Color3.fromRGB(171, 172, 176)
-		Text2.TextSize                       = 14.000
-
-		TextBoxFrame.Name                    = "TextBoxFrame"
-		TextBoxFrame.Parent                  = AvatarChange
-		TextBoxFrame.AnchorPoint             = Vector2.new(0.5, 0.5)
-		TextBoxFrame.BackgroundColor3        = Color3.fromRGB(37, 40, 43)
-		TextBoxFrame.Position                = UDim2.new(0.49710983, 0, 0.560606062, 0)
-		TextBoxFrame.Size                    = UDim2.new(0, 319, 0, 38)
-
-		TextBoxFrameCorner.CornerRadius      = UDim.new(0, 3)
-		TextBoxFrameCorner.Name              = "TextBoxFrameCorner"
-		TextBoxFrameCorner.Parent            = TextBoxFrame
-
-		TextBoxFrame1.Name                   = "TextBoxFrame1"
-		TextBoxFrame1.Parent                 = TextBoxFrame
-		TextBoxFrame1.AnchorPoint            = Vector2.new(0.5, 0.5)
-		TextBoxFrame1.BackgroundColor3       = Color3.fromRGB(48, 51, 57)
-		TextBoxFrame1.ClipsDescendants       = true
-		TextBoxFrame1.Position               = UDim2.new(0.5, 0, 0.5, 0)
-		TextBoxFrame1.Size                   = UDim2.new(0, 317, 0, 36)
-
-		TextBoxFrame1Corner.CornerRadius     = UDim.new(0, 3)
-		TextBoxFrame1Corner.Name             = "TextBoxFrame1Corner"
-		TextBoxFrame1Corner.Parent           = TextBoxFrame1
-
-		AvatarTextbox.Name                   = "AvatarTextbox"
-		AvatarTextbox.Parent                 = TextBoxFrame1
-		AvatarTextbox.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-		AvatarTextbox.BackgroundTransparency = 1.000
-		AvatarTextbox.Position               = UDim2.new(0.0378548913, 0, 0, 0)
-		AvatarTextbox.Size                   = UDim2.new(0, 293, 0, 37)
-		AvatarTextbox.Font                   = Enum.Font.Gotham
-		AvatarTextbox.Text                   = ""
-		AvatarTextbox.TextColor3             = Color3.fromRGB(193, 195, 197)
-		AvatarTextbox.TextSize               = 14.000
-		AvatarTextbox.TextXAlignment         = Enum.TextXAlignment.Left
-
-		ChangeBtn.Name                       = "ChangeBtn"
-		ChangeBtn.Parent                     = AvatarChange
-		ChangeBtn.BackgroundColor3           = Color3.fromRGB(114, 137, 228)
-		ChangeBtn.Position                   = UDim2.new(0.749670506, 0, 0.823232353, 0)
-		ChangeBtn.Size                       = UDim2.new(0, 76, 0, 27)
-		ChangeBtn.Font                       = Enum.Font.Gotham
-		ChangeBtn.Text                       = "Change"
-		ChangeBtn.TextColor3                 = Color3.fromRGB(255, 255, 255)
-		ChangeBtn.TextSize                   = 13.000
-		ChangeBtn.AutoButtonColor            = false
-
-		ChangeBtn.MouseEnter:Connect(function()
-			TweenService:Create(
-				ChangeBtn,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(103, 123, 196)}
-			):Play()
-		end)
-
-		ChangeBtn.MouseLeave:Connect(function()
-			TweenService:Create(
-				ChangeBtn,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-			):Play()
-		end)
-
-		ChangeBtn.MouseButton1Click:Connect(function()
-			Player_Display           = tostring(AvatarTextbox.Text)
-			UserImage.Image          = Player_Display 
-			UserPanelUserImage.Image = Player_Display
-			
-			Save_File()
-
-			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-			TweenService:Create(
-				AvatarChange,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			TweenService:Create(
-				NotificationHolder,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			wait(.2)
-			NotificationHolder:Destroy()
-		end)
-
-		ChangeCorner.CornerRadius         = UDim.new(0, 4)
-		ChangeCorner.Name                 = "ChangeCorner"
-		ChangeCorner.Parent               = ChangeBtn
-
-		CloseBtn2.Name                    = "CloseBtn2"
-		CloseBtn2.Parent                  = AvatarChange
-		CloseBtn2.BackgroundColor3        = Color3.fromRGB(255, 255, 255)
-		CloseBtn2.BackgroundTransparency  = 1.000
-		CloseBtn2.Position                = UDim2.new(0.898000002, 0, 0, 0)
-		CloseBtn2.Size                    = UDim2.new(0, 26, 0, 26)
-		CloseBtn2.Font                    = Enum.Font.Gotham
-		CloseBtn2.Text                    = ""
-		CloseBtn2.TextColor3              = Color3.fromRGB(255, 255, 255)
-		CloseBtn2.TextSize                = 14.000
-
-		Close2Icon.Name                   = "Close2Icon"
-		Close2Icon.Parent                 = CloseBtn2
-		Close2Icon.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-		Close2Icon.BackgroundTransparency = 1.000
-		Close2Icon.Position               = UDim2.new(-0.0384615399, 0, 0.312910825, 0)
-		Close2Icon.Size                   = UDim2.new(0, 25, 0, 25)
-		Close2Icon.Image                  = "http://www.roblox.com/asset/?id=6035047409"
-		Close2Icon.ImageColor3            = Color3.fromRGB(119, 122, 127)
-
-		CloseBtn1.Name                    = "CloseBtn1"
-		CloseBtn1.Parent                  = AvatarChange
-		CloseBtn1.BackgroundColor3        = Color3.fromRGB(114, 137, 228)
-		CloseBtn1.BackgroundTransparency  = 1.000
-		CloseBtn1.Position                = UDim2.new(0.495000005, 0, 0.823000014, 0)
-		CloseBtn1.Size                    = UDim2.new(0, 76, 0, 27)
-		CloseBtn1.Font                    = Enum.Font.Gotham
-		CloseBtn1.Text                    = "Close"
-		CloseBtn1.TextColor3              = Color3.fromRGB(255, 255, 255)
-		CloseBtn1.TextSize                = 13.000
-
-		CloseBtn1Corner.CornerRadius      = UDim.new(0, 4)
-		CloseBtn1Corner.Name              = "CloseBtn1Corner"
-		CloseBtn1Corner.Parent            = CloseBtn1
-
-		ResetBtn.Name                     = "ResetBtn"
-		ResetBtn.Parent                   = AvatarChange
-		ResetBtn.BackgroundColor3         = Color3.fromRGB(114, 137, 228)
-		ResetBtn.BackgroundTransparency   = 1.000
-		ResetBtn.Position                 = UDim2.new(0.260895967, 0, 0.823000014, 0)
-		ResetBtn.Size                     = UDim2.new(0, 76, 0, 27)
-		ResetBtn.Font                     = Enum.Font.Gotham
-		ResetBtn.Text                     = "Reset"
-		ResetBtn.TextColor3               = Color3.fromRGB(255, 255, 255)
-		ResetBtn.TextSize                 = 13.000
-
-		ResetBtn.MouseButton1Click:Connect(function()
-			Player_Display           = "https://www.roblox.com/headshot-thumbnail/image?userId="..LocalPlayer.UserId.."&width=420&height=420&format=png"
-			UserImage.Image          = Player_Display 
-			UserPanelUserImage.Image = Player_Display
-			
-			Save_File()
-
-			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-			TweenService:Create(
-				AvatarChange,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			TweenService:Create(
-				NotificationHolder,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			wait(.2)
-			NotificationHolder:Destroy()
-		end)
-
-		ResetCorner.CornerRadius = UDim.new(0, 4)
-		ResetCorner.Name         = "ResetCorner"
-		ResetCorner.Parent       = ResetBtn
-		
-		CloseBtn2.MouseEnter:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(210, 210, 210)}
-			):Play()
-		end)
-
-		CloseBtn2.MouseLeave:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(119, 122, 127)}
-			):Play()
-		end)
-		
-		CloseBtn1.MouseButton1Click:Connect(function()
-			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-			TweenService:Create(
-				AvatarChange,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			TweenService:Create(
-				NotificationHolder,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			wait(.2)
-			NotificationHolder:Destroy()
-		end)
-		
-		CloseBtn2.MouseButton1Click:Connect(function()
-			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-			TweenService:Create(
-				AvatarChange,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			TweenService:Create(
-				NotificationHolder,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			wait(.2)
-			NotificationHolder:Destroy()
-		end)
-
-		AvatarTextbox.Focused:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-			):Play()
-		end)
-
-		AvatarTextbox.FocusLost:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(37, 40, 43)}
-			):Play()
-		end)
-	end)
-
-	UserPanelUserTag.Name                     = "UserPanelUserTag"
-	UserPanelUserTag.Parent                   = UserPanel
-	UserPanelUserTag.BackgroundColor3         = Color3.fromRGB(255, 255, 255)
-	UserPanelUserTag.BackgroundTransparency   = 1.000
-	UserPanelUserTag.Position                 = UDim2.new(0.271143615, 0, 0.231804818, 0)
-	UserPanelUserTag.Size                     = UDim2.new(0, 113, 0, 19)
-
-	UserPanelUser.Name                        = "UserPanelUser"
-	UserPanelUser.Parent                      = UserPanelUserTag
-	UserPanelUser.BackgroundColor3            = Color3.fromRGB(255, 255, 255)
-	UserPanelUser.BackgroundTransparency      = 1.000
-	UserPanelUser.Font                        = Enum.Font.GothamSemibold
-	UserPanelUser.TextColor3                  = Color3.fromRGB(255, 255, 255)
-	UserPanelUser.TextSize                    = 17.000
-	UserPanelUser.TextXAlignment              = Enum.TextXAlignment.Left
-	UserPanelUser.Text                        = Player_Name
-	UserPanelUser.Size                        = UDim2.new(0, UserPanelUser.TextBounds.X + 2, 0, 19)
-
-	UserPanelUserTagLayout.Name               = "UserPanelUserTagLayout"
-	UserPanelUserTagLayout.Parent             = UserPanelUserTag
-	UserPanelUserTagLayout.FillDirection      = Enum.FillDirection.Horizontal
-	UserPanelUserTagLayout.SortOrder          = Enum.SortOrder.LayoutOrder
-
-	UserPanelTag.Name                         = "UserPanelTag"
-	UserPanelTag.Parent                       = UserPanelUserTag
-	UserPanelTag.BackgroundColor3             = Color3.fromRGB(255, 255, 255)
-	UserPanelTag.BackgroundTransparency       = 1.000
-	UserPanelTag.Position                     = UDim2.new(0.0419999994, 0, 0.493999988, 0)
-	UserPanelTag.Size                         = UDim2.new(0, 65, 0, 19)
-	UserPanelTag.Font                         = Enum.Font.Gotham
-	UserPanelTag.Text                         = "#"..Player_ID
-	UserPanelTag.TextColor3                   = Color3.fromRGB(184, 186, 189)
-	UserPanelTag.TextSize                     = 17.000
-	UserPanelTag.TextXAlignment               = Enum.TextXAlignment.Left
-
-	UserPanelCorner.Name                      = "UserPanelCorner"
-	UserPanelCorner.Parent                    = UserPanel
-
-	LeftFrame.Name                            = "LeftFrame"
-	LeftFrame.Parent                          = SettingsHolder
-	LeftFrame.BackgroundColor3                = Color3.fromRGB(47, 49, 54)
-	LeftFrame.BorderSizePixel                 = 0
-	LeftFrame.Position                        = UDim2.new(0, 0, -0.000303059904, 0)
-	LeftFrame.Size                            = UDim2.new(0, 233, 0, 375)
-
-	MyAccountBtn.Name                         = "MyAccountBtn"
-	MyAccountBtn.Parent                       = LeftFrame
-	MyAccountBtn.BackgroundColor3             = Color3.fromRGB(57, 60, 67)
-	MyAccountBtn.BorderSizePixel              = 0
-	MyAccountBtn.Position                     = UDim2.new(0.271232396, 0, 0.101614028, 0)
-	MyAccountBtn.Size                         = UDim2.new(0, 160, 0, 30)
-	MyAccountBtn.AutoButtonColor              = false
-	MyAccountBtn.Font                         = Enum.Font.SourceSans
-	MyAccountBtn.Text                         = ""
-	MyAccountBtn.TextColor3                   = Color3.fromRGB(0, 0, 0)
-	MyAccountBtn.TextSize                     = 14.000
-
-	MyAccountBtnCorner.CornerRadius           = UDim.new(0, 6)
-	MyAccountBtnCorner.Name                   = "MyAccountBtnCorner"
-	MyAccountBtnCorner.Parent                 = MyAccountBtn
-
-	MyAccountBtnTitle.Name                    = "MyAccountBtnTitle"
-	MyAccountBtnTitle.Parent                  = MyAccountBtn
-	MyAccountBtnTitle.BackgroundColor3        = Color3.fromRGB(255, 255, 255)
-	MyAccountBtnTitle.BackgroundTransparency  = 1.000
-	MyAccountBtnTitle.BorderSizePixel         = 0
-	MyAccountBtnTitle.Position                = UDim2.new(0.0759999976, 0, -0.166999996, 0)
-	MyAccountBtnTitle.Size                    = UDim2.new(0, 95, 0, 39)
-	MyAccountBtnTitle.Font                    = Enum.Font.GothamSemibold
-	MyAccountBtnTitle.Text                    = "My Account"
-	MyAccountBtnTitle.TextColor3              = Color3.fromRGB(255, 255, 255)
-	MyAccountBtnTitle.TextSize                = 14.000
-	MyAccountBtnTitle.TextXAlignment          = Enum.TextXAlignment.Left
-
-	SettingsTitle.Name                        = "SettingsTitle"
-	SettingsTitle.Parent                      = LeftFrame
-	SettingsTitle.BackgroundColor3            = Color3.fromRGB(255, 255, 255)
-	SettingsTitle.BackgroundTransparency      = 1.000
-	SettingsTitle.Position                    = UDim2.new(0.308999985, 0, 0.0450000018, 0)
-	SettingsTitle.Size                        = UDim2.new(0, 65, 0, 19)
-	SettingsTitle.Font                        = Enum.Font.GothamBlack
-	SettingsTitle.Text                        = "SETTINGS"
-	SettingsTitle.TextColor3                  = Color3.fromRGB(142, 146, 152)
-	SettingsTitle.TextSize                    = 11.000
-	SettingsTitle.TextXAlignment              = Enum.TextXAlignment.Left
-
-	DiscordInfo.Name                          = "DiscordInfo"
-	DiscordInfo.Parent                        = LeftFrame
-	DiscordInfo.BackgroundColor3              = Color3.fromRGB(255, 255, 255)
-	DiscordInfo.BackgroundTransparency        = 1.000
-	DiscordInfo.Position                      = UDim2.new(0.304721028, 0, 0.821333349, 0)
-	DiscordInfo.Size                          = UDim2.new(0, 133, 0, 44)
-	DiscordInfo.Font                          = Enum.Font.Gotham
-	DiscordInfo.Text                          = "Stable 1.0.0\nRoblox Lua Engine"
-	DiscordInfo.TextColor3                    = Color3.fromRGB(101, 108, 116)
-	DiscordInfo.TextSize                      = 13.000
-	DiscordInfo.TextWrapped                   = true
-	DiscordInfo.TextXAlignment                = Enum.TextXAlignment.Left
-	DiscordInfo.TextYAlignment                = Enum.TextYAlignment.Top
-
-	CurrentSettingOpen.Name                   = "CurrentSettingOpen"
-	CurrentSettingOpen.Parent                 = LeftFrame
-	CurrentSettingOpen.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-	CurrentSettingOpen.BackgroundTransparency = 1.000
-	CurrentSettingOpen.Position               = UDim2.new(1.07294846, 0, 0.0450000018, 0)
-	CurrentSettingOpen.Size                   = UDim2.new(0, 65, 0, 19)
-	CurrentSettingOpen.Font                   = Enum.Font.GothamBlack
-	CurrentSettingOpen.Text                   = "MY ACCOUNT"
-	CurrentSettingOpen.TextColor3             = Color3.fromRGB(255, 255, 255)
-	CurrentSettingOpen.TextSize               = 14.000
-	CurrentSettingOpen.TextXAlignment         = Enum.TextXAlignment.Left
-
-	SettingsOpenBtn.MouseButton1Click:Connect(function()
-		SettingsOpened           = true
-		TopFrameHolder.Visible   = false
-		ServersHoldFrame.Visible = false
-		SettingsFrame.Visible    = true
-
-		SettingsHolder:TweenSize(UDim2.new(0, 681, 0, 375), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-		Settings.BackgroundTransparency = 1
-
-		TweenService:Create(
-			Settings,
-			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundTransparency = 0}
-		):Play()
-
-		for Index, Child in next, SettingsHolder:GetChildren() do
-			Child.BackgroundTransparency = 1
-			TweenService:Create(
-				Child,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 0}
-			):Play()
-		end
-	end)
-
-	EditBtn.MouseButton1Click:Connect(function()
-		local NotificationHolder                  = Instance.new("TextButton")
-		NotificationHolder.Name                   = "NotificationHolder"
-		NotificationHolder.Parent                 = SettingsHolder
-		NotificationHolder.BackgroundColor3       = Color3.fromRGB(22, 22, 22)
-		NotificationHolder.Position               = UDim2.new(-0.00881057233, 0, -0.00266666664, 0)
-		NotificationHolder.Size                   = UDim2.new(0, 687, 0, 375)
-		NotificationHolder.AutoButtonColor        = false
-		NotificationHolder.Font                   = Enum.Font.SourceSans
-		NotificationHolder.Text                   = ""
-		NotificationHolder.TextColor3             = Color3.fromRGB(0, 0, 0)
-		NotificationHolder.TextSize               = 14.000
-		NotificationHolder.BackgroundTransparency = 1
-		NotificationHolder.Visible                = true
-
-		TweenService:Create(
-			NotificationHolder,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundTransparency = 0.2}
-		):Play()
-
-		local UserChange                  = Instance.new("Frame")
-		local UserChangeCorner            = Instance.new("UICorner")
-		local UnderBar                    = Instance.new("Frame")
-		local UnderBarCorner              = Instance.new("UICorner")
-		local UnderBarFrame               = Instance.new("Frame")
-		local Text1                       = Instance.new("TextLabel")
-		local Text2                       = Instance.new("TextLabel")
-		local TextBoxFrame                = Instance.new("Frame")
-		local TextBoxFrameCorner          = Instance.new("UICorner")
-		local TextBoxFrame1               = Instance.new("Frame")
-		local TextBoxFrame1Corner         = Instance.new("UICorner")
-		local UsernameTextbox             = Instance.new("TextBox")
-		local Seperator                   = Instance.new("Frame")
-		local HashtagLabel                = Instance.new("TextLabel")
-		local TagTextbox                  = Instance.new("TextBox")
-		local ChangeBtn                   = Instance.new("TextButton")
-		local ChangeCorner                = Instance.new("UICorner")
-		local CloseBtn2                   = Instance.new("TextButton")
-		local Close2Icon                  = Instance.new("ImageLabel")
-		local CloseBtn1                   = Instance.new("TextButton")
-		local CloseBtn1Corner             = Instance.new("UICorner")
-
-		UserChange.Name                   = "UserChange"
-		UserChange.Parent                 = NotificationHolder
-		UserChange.AnchorPoint            = Vector2.new(0.5, 0.5)
-		UserChange.BackgroundColor3       = Color3.fromRGB(54, 57, 63)
-		UserChange.ClipsDescendants       = true
-		UserChange.Position               = UDim2.new(0.513071597, 0, 0.4746176, 0)
-		UserChange.Size                   = UDim2.new(0, 0, 0, 0)
-		UserChange.BackgroundTransparency = 1
-
-		UserChange:TweenSize(UDim2.new(0, 346, 0, 198), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-		TweenService:Create(
-			UserChange,
-			TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{BackgroundTransparency = 0}
-		):Play()
-
-		UserChangeCorner.CornerRadius          = UDim.new(0, 5)
-		UserChangeCorner.Name                  = "UserChangeCorner"
-		UserChangeCorner.Parent                = UserChange
-
-		UnderBar.Name                          = "UnderBar"
-		UnderBar.Parent                        = UserChange
-		UnderBar.BackgroundColor3              = Color3.fromRGB(47, 49, 54)
-		UnderBar.Position                      = UDim2.new(-0.000297061284, 0, 0.945048928, 0)
-		UnderBar.Size                          = UDim2.new(0, 346, 0, 13)
-
-		UnderBarCorner.CornerRadius            = UDim.new(0, 5)
-		UnderBarCorner.Name                    = "UnderBarCorner"
-		UnderBarCorner.Parent                  = UnderBar
-
-		UnderBarFrame.Name                     = "UnderBarFrame"
-		UnderBarFrame.Parent                   = UnderBar
-		UnderBarFrame.BackgroundColor3         = Color3.fromRGB(47, 49, 54)
-		UnderBarFrame.BorderSizePixel          = 0
-		UnderBarFrame.Position                 = UDim2.new(-0.000297061284, 0, -2.53846145, 0)
-		UnderBarFrame.Size                     = UDim2.new(0, 346, 0, 39)
-
-		Text1.Name                             = "Text1"
-		Text1.Parent                           = UserChange
-		Text1.BackgroundColor3                 = Color3.fromRGB(255, 255, 255)
-		Text1.BackgroundTransparency           = 1.000
-		Text1.Position                         = UDim2.new(-0.000594122568, 0, 0.0202020202, 0)
-		Text1.Size                             = UDim2.new(0, 346, 0, 68)
-		Text1.Font                             = Enum.Font.GothamSemibold
-		Text1.Text                             = "Username"
-		Text1.TextColor3                       = Color3.fromRGB(255, 255, 255)
-		Text1.TextSize                         = 20.000
-
-		Text2.Name                             = "Text2"
-		Text2.Parent                           = UserChange
-		Text2.BackgroundColor3                 = Color3.fromRGB(255, 255, 255)
-		Text2.BackgroundTransparency           = 1.000
-		Text2.Position                         = UDim2.new(-0.000594122568, 0, 0.141587839, 0)
-		Text2.Size                             = UDim2.new(0, 346, 0, 63)
-		Text2.Font                             = Enum.Font.Gotham
-		Text2.Text                             = "NAME"
-		Text2.TextColor3                       = Color3.fromRGB(171, 172, 176)
-		Text2.TextSize                         = 14.000
-
-		TextBoxFrame.Name                      = "TextBoxFrame"
-		TextBoxFrame.Parent                    = UserChange
-		TextBoxFrame.AnchorPoint               = Vector2.new(0.5, 0.5)
-		TextBoxFrame.BackgroundColor3          = Color3.fromRGB(37, 40, 43)
-		TextBoxFrame.Position                  = UDim2.new(0.49710983, 0, 0.560606062, 0)
-		TextBoxFrame.Size                      = UDim2.new(0, 319, 0, 38)
-
-		TextBoxFrameCorner.CornerRadius        = UDim.new(0, 3)
-		TextBoxFrameCorner.Name                = "TextBoxFrameCorner"
-		TextBoxFrameCorner.Parent              = TextBoxFrame
-
-		TextBoxFrame1.Name                     = "TextBoxFrame1"
-		TextBoxFrame1.Parent                   = TextBoxFrame
-		TextBoxFrame1.AnchorPoint              = Vector2.new(0.5, 0.5)
-		TextBoxFrame1.BackgroundColor3         = Color3.fromRGB(48, 51, 57)
-		TextBoxFrame1.Position                 = UDim2.new(0.5, 0, 0.5, 0)
-		TextBoxFrame1.Size                     = UDim2.new(0, 317, 0, 36)
-
-		TextBoxFrame1Corner.CornerRadius       = UDim.new(0, 3)
-		TextBoxFrame1Corner.Name               = "TextBoxFrame1Corner"
-		TextBoxFrame1Corner.Parent             = TextBoxFrame1
-
-		UsernameTextbox.Name                   = "UsernameTextbox"
-		UsernameTextbox.Parent                 = TextBoxFrame1
-		UsernameTextbox.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-		UsernameTextbox.BackgroundTransparency = 1.000
-		UsernameTextbox.Position               = UDim2.new(0.0378548913, 0, 0, 0)
-		UsernameTextbox.Size                   = UDim2.new(0, 221, 0, 37)
-		UsernameTextbox.Font                   = Enum.Font.Gotham
-		UsernameTextbox.Text                   = Player_Name
-		UsernameTextbox.TextColor3             = Color3.fromRGB(193, 195, 197)
-		UsernameTextbox.TextSize               = 14.000
-		UsernameTextbox.TextXAlignment         = Enum.TextXAlignment.Left
-
-		Seperator.Name                         = "Seperator"
-		Seperator.Parent                       = TextBoxFrame1
-		Seperator.AnchorPoint                  = Vector2.new(0.5, 0.5)
-		Seperator.BackgroundColor3             = Color3.fromRGB(64, 68, 73)
-		Seperator.BorderSizePixel              = 0
-		Seperator.Position                     = UDim2.new(0.753000021, 0, 0.500999987, 0)
-		Seperator.Size                         = UDim2.new(0, 1, 0, 25)
-
-		HashtagLabel.Name                      = "HashtagLabel"
-		HashtagLabel.Parent                    = TextBoxFrame1
-		HashtagLabel.BackgroundColor3          = Color3.fromRGB(255, 255, 255)
-		HashtagLabel.BackgroundTransparency    = 1.000
-		HashtagLabel.Position                  = UDim2.new(0.765877604, 0, -0.0546001866, 0)
-		HashtagLabel.Size                      = UDim2.new(0, 23, 0, 37)
-		HashtagLabel.Font                      = Enum.Font.Gotham
-		HashtagLabel.Text                      = "#"
-		HashtagLabel.TextColor3                = Color3.fromRGB(79, 82, 88)
-		HashtagLabel.TextSize                  = 16.000
-
-		TagTextbox.Name                        = "TagTextbox"
-		TagTextbox.Parent                      = TextBoxFrame1
-		TagTextbox.BackgroundColor3            = Color3.fromRGB(255, 255, 255)
-		TagTextbox.BackgroundTransparency      = 1.000
-		TagTextbox.Position                    = UDim2.new(0.824999988, 0, -0.0280000009, 0)
-		TagTextbox.Size                        = UDim2.new(0, 59, 0, 38)
-		TagTextbox.Font                        = Enum.Font.Gotham
-		TagTextbox.PlaceholderColor3           = Color3.fromRGB(210, 211, 212)
-		TagTextbox.Text                        = Player_ID
-		TagTextbox.TextColor3                  = Color3.fromRGB(193, 195, 197)
-		TagTextbox.TextSize                    = 14.000
-		TagTextbox.TextXAlignment              = Enum.TextXAlignment.Left
-
-		ChangeBtn.Name                         = "ChangeBtn"
-		ChangeBtn.Parent                       = UserChange
-		ChangeBtn.BackgroundColor3             = Color3.fromRGB(114, 137, 228)
-		ChangeBtn.Position                     = UDim2.new(0.749670506, 0, 0.823232353, 0)
-		ChangeBtn.Size                         = UDim2.new(0, 76, 0, 27)
-		ChangeBtn.Font                         = Enum.Font.Gotham
-		ChangeBtn.Text                         = "Change"
-		ChangeBtn.TextColor3                   = Color3.fromRGB(255, 255, 255)
-		ChangeBtn.TextSize                     = 13.000
-		ChangeBtn.AutoButtonColor              = false
-
-		ChangeBtn.MouseEnter:Connect(function()
-			TweenService:Create(
-				ChangeBtn,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(103, 123, 196)}
-			):Play()
-		end)
-
-		ChangeBtn.MouseLeave:Connect(function()
-			TweenService:Create(
-				ChangeBtn,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-			):Play()
-		end)
-
-		ChangeBtn.MouseButton1Click:Connect(function()
-			Player_Name              = UsernameTextbox.Text
-			Player_ID                = TagTextbox.Text
-			
-			UserSettingsPadUser.Text = Player_Name
-			UserSettingsPadUser.Size = UDim2.new(0, UserSettingsPadUser.TextBounds.X + 2, 0, 19)
-			UserSettingsPadTag.Text  = "#"..Player_ID
-			
-			UserPanelUser.Text       = Player_Name
-			UserPanelUser.Size       = UDim2.new(0, UserPanelUser.TextBounds.X + 2, 0, 19)
-			UserPanelTag.Text        = "#"..Player_ID
-			
-			UserName.Text            = Player_Name
-			UserTag.Text             = "#"..Player_ID
-			
-			Save_File()
-
-			UserChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-			TweenService:Create(
-				UserChange,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			TweenService:Create(
-				NotificationHolder,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			wait(.2)
-			NotificationHolder:Destroy()
-		end)
-
-		ChangeCorner.CornerRadius         = UDim.new(0, 4)
-		ChangeCorner.Name                 = "ChangeCorner"
-		ChangeCorner.Parent               = ChangeBtn
-
-		CloseBtn2.Name                    = "CloseBtn2"
-		CloseBtn2.Parent                  = UserChange
-		CloseBtn2.BackgroundColor3        = Color3.fromRGB(255, 255, 255)
-		CloseBtn2.BackgroundTransparency  = 1.000
-		CloseBtn2.Position                = UDim2.new(0.898000002, 0, 0, 0)
-		CloseBtn2.Size                    = UDim2.new(0, 26, 0, 26)
-		CloseBtn2.Font                    = Enum.Font.Gotham
-		CloseBtn2.Text                    = ""
-		CloseBtn2.TextColor3              = Color3.fromRGB(255, 255, 255)
-		CloseBtn2.TextSize                = 14.000
-
-		Close2Icon.Name                   = "Close2Icon"
-		Close2Icon.Parent                 = CloseBtn2
-		Close2Icon.BackgroundColor3       = Color3.fromRGB(255, 255, 255)
-		Close2Icon.BackgroundTransparency = 1.000
-		Close2Icon.Position               = UDim2.new(-0.0384615399, 0, 0.312910825, 0)
-		Close2Icon.Size                   = UDim2.new(0, 25, 0, 25)
-		Close2Icon.Image                  = "http://www.roblox.com/asset/?id=6035047409"
-		Close2Icon.ImageColor3            = Color3.fromRGB(119, 122, 127)
-
-		CloseBtn1.Name                    = "CloseBtn1"
-		CloseBtn1.Parent                  = UserChange
-		CloseBtn1.BackgroundColor3        = Color3.fromRGB(114, 137, 228)
-		CloseBtn1.BackgroundTransparency  = 1.000
-		CloseBtn1.Position                = UDim2.new(0.495000005, 0, 0.823000014, 0)
-		CloseBtn1.Size                    = UDim2.new(0, 76, 0, 27)
-		CloseBtn1.Font                    = Enum.Font.Gotham
-		CloseBtn1.Text                    = "Close"
-		CloseBtn1.TextColor3              = Color3.fromRGB(255, 255, 255)
-		CloseBtn1.TextSize                = 13.000
-
-		CloseBtn1Corner.CornerRadius      = UDim.new(0, 4)
-		CloseBtn1Corner.Name              = "CloseBtn1Corner"
-		CloseBtn1Corner.Parent            = CloseBtn1
-		
-		CloseBtn2.MouseEnter:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(210, 210, 210)}
-			):Play()
-		end)
-
-		CloseBtn2.MouseLeave:Connect(function()
-			TweenService:Create(
-				Close2Icon,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{ImageColor3 = Color3.fromRGB(119, 122, 127)}
-			):Play()
-		end)
-		
-		CloseBtn1.MouseButton1Click:Connect(function()
-			UserChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-			TweenService:Create(
-				UserChange,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			TweenService:Create(
-				NotificationHolder,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			wait(.2)
-			NotificationHolder:Destroy()
-		end)
-
-		CloseBtn2.MouseButton1Click:Connect(function()
-			UserChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
-			TweenService:Create(
-				UserChange,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			TweenService:Create(
-				NotificationHolder,
-				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundTransparency = 1}
-			):Play()
-
-			wait(.2)
-			NotificationHolder:Destroy()
-		end)
-
-		UsernameTextbox.Changed:Connect(function()
-			UsernameTextbox.Text = UsernameTextbox.Text:sub(1, 13)
-		end)
-		
-		UsernameTextbox.Focused:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-			):Play()
-		end)
-
-		UsernameTextbox.FocusLost:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(37, 40, 43)}
-			):Play()
-		end)
-		
-		TagTextbox.Changed:Connect(function()
-			TagTextbox.Text = TagTextbox.Text:sub(1, 4)
-		end)
-
-		TagTextbox:GetPropertyChangedSignal("Text"):Connect(function()
-			TagTextbox.Text = TagTextbox.Text:gsub('%D+', '')
-		end)
-		
-		TagTextbox.Focused:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
-			):Play()
-		end)
-
-		TagTextbox.FocusLost:Connect(function()
-			TweenService:Create(
-				TextBoxFrame,
-				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-				{BackgroundColor3 = Color3.fromRGB(37, 40, 43)}
-			):Play()
-		end)
-	end)
 
 	function Library:Notification(TitleText, DescText, BtnText)
 		local NotificationHolderMain                  = Instance.new("TextButton")
@@ -1646,7 +449,7 @@ function Library:Window(Text)
 		AlrightCorner.CornerRadius      = UDim.new(0, 4)
 		AlrightCorner.Name              = "AlrightCorner"
 		AlrightCorner.Parent            = AlrightBtn
-		
+
 		AlrightBtn.MouseEnter:Connect(function()
 			TweenService:Create(
 				AlrightBtn,
@@ -1662,7 +465,7 @@ function Library:Window(Text)
 				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
 			):Play()
 		end)
-		
+
 		AlrightBtn.MouseButton1Click:Connect(function()
 			TweenService:Create(
 				NotificationHolderMain,
@@ -1970,7 +773,7 @@ function Library:Window(Text)
 					if Child.Name == "ServerFrame" then
 						Child.Visible = false
 					end
-					
+
 					ServerFrame.Visible = true
 				end
 
@@ -2206,7 +1009,7 @@ function Library:Window(Text)
 						{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
 					):Play()
 				end)
-				
+
 				Button.MouseButton1Click:Connect(function()
 					pcall(Callback)
 					Button.TextSize = 0
@@ -2217,7 +1020,7 @@ function Library:Window(Text)
 						{TextSize = 14}
 					):Play()
 				end)
-				
+
 				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
 
@@ -2554,7 +1357,7 @@ function Library:Window(Text)
 				Seperator2.BorderSizePixel        = 0
 				Seperator2.Position               = UDim2.new(0, 0, 0, 4)
 				Seperator2.Size                   = UDim2.new(0, 401, 0, 1)
-				
+
 				ChannelHolder.CanvasSize          = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
 
@@ -2712,13 +1515,13 @@ function Library:Window(Text)
 						DropdownFrameMain.Visible        = true
 						DropdownFrameMainOutline.Visible = true
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73 + DropdownFrameMainOutline.AbsoluteSize.Y)
-						
+
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 					else
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 						DropdownFrameMain.Visible        = false
 						DropdownFrameMainOutline.Visible = false
-						
+
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 					end
 
@@ -2785,7 +1588,7 @@ function Library:Window(Text)
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 						DropdownFrameMain.Visible        = false
 						DropdownFrameMainOutline.Visible = false
-						
+
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 						DropTog                          = not DropTog
 					end)
@@ -2812,7 +1615,7 @@ function Library:Window(Text)
 					Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 					DropdownFrameMain.Visible        = false
 					DropdownFrameMainOutline.Visible = false
-					
+
 					ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 				end
 
@@ -2875,7 +1678,7 @@ function Library:Window(Text)
 						Dropdown.Size                    = UDim2.new(0, 403, 0, 73)
 						DropdownFrameMain.Visible        = false
 						DropdownFrameMainOutline.Visible = false
-						
+
 						ChannelHolder.CanvasSize         = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 						DropTog                          = not DropTog
 					end)
@@ -2885,7 +1688,7 @@ function Library:Window(Text)
 					DropdownFrameMain.Size        = UDim2.new(0, 392, 0, FrameSize + 6)
 					DropdownFrameMainOutline.Size = UDim2.new(0, 396, 0, FrameSize + 10)
 				end
-				
+
 				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 				return DropFunc
 			end
@@ -2989,7 +1792,7 @@ function Library:Window(Text)
 				HueCorner.CornerRadius                      = UDim.new(0, 3)
 				HueCorner.Name                              = "HueCorner"
 				HueCorner.Parent                            = Hue
-				
+
 				HueGradient.Color                           = ColorSequence.new {
 					ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)),
 					ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)),
@@ -3032,14 +1835,14 @@ function Library:Window(Text)
 				ColourH                    =
 					1 -
 					(math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
-					Hue.AbsoluteSize.Y)
+						Hue.AbsoluteSize.Y)
 				ColourS                    =
 					(math.clamp(ColourSelection.AbsolutePosition.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
-					Colour.AbsoluteSize.X)
+						Colour.AbsoluteSize.X)
 				ColourV                    =
 					1 -
 					(math.clamp(ColourSelection.AbsolutePosition.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
-					Colour.AbsoluteSize.Y)
+						Colour.AbsoluteSize.Y)
 
 				PresetClr.BackgroundColor3 = Preset
 				Colour.BackgroundColor3    = Preset
@@ -3056,10 +1859,10 @@ function Library:Window(Text)
 								RunService.RenderStepped:Connect(
 									function()
 										local ColorX             =
-											(math.clamp(Mouse.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
+										(math.clamp(Mouse.X - Colour.AbsolutePosition.X, 0, Colour.AbsoluteSize.X) /
 											Colour.AbsoluteSize.X)
 										local ColorY             =
-											(math.clamp(Mouse.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
+										(math.clamp(Mouse.Y - Colour.AbsolutePosition.Y, 0, Colour.AbsoluteSize.Y) /
 											Colour.AbsoluteSize.Y)
 
 										ColourSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
@@ -3094,7 +1897,7 @@ function Library:Window(Text)
 								RunService.RenderStepped:Connect(
 									function()
 										local HueY            =
-											(math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
+										(math.clamp(Mouse.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) /
 											Hue.AbsoluteSize.Y)
 
 										HueSelection.Position = UDim2.new(0.48, 0, HueY, 0)
@@ -3245,7 +2048,7 @@ function Library:Window(Text)
 				function LabelFunc:Change(Value)
 					LabelTitle.Text = Value
 				end
-				
+
 				ChannelHolder.CanvasSize = UDim2.new(0, 0, 0, ChannelHolderLayout.AbsoluteContentSize.Y)
 				return LabelFunc
 			end
