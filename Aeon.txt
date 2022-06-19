@@ -2071,7 +2071,11 @@ function Library:Window(Text)
 			end
 
 			function ChannelContent:Bind(Text, PresetBind, Callback)
-				local Saves                         = Player_File[CurrentServerToggled]["KEYBINDS"]
+				local Saves                         = nil
+				
+				if Player_File and Player_File[CurrentServerToggled]['KEYBINDS'][Text] then
+					Saves = Player_File[CurrentServerToggled]['KEYBINDS'][Text]
+				end
 				
 				local Key                           = Saves[Text] or PresetBind.Name
 				local Keybind                       = Instance.new("TextButton")
