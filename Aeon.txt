@@ -17,10 +17,10 @@ pcall(function()
 	Player_File = HttpService:JSONDecode(readfile("Aeon.txt"))
 end)
 
-local Discord          = Instance.new("ScreenGui")
-Discord.Name           = "Discord"
-Discord.Parent         = game.CoreGui
-Discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local function Save(Parameter, Value)
+	Player_File[Parameter] = Value
+	writefile("Aeon.txt", HttpService:JSONEncode(Player_File))
+end
 
 local function Draggable(TopBarObject, Object)
 	local Dragging      = nil
@@ -79,10 +79,10 @@ local function Draggable(TopBarObject, Object)
 	)
 end
 
-function Library:Save(Parameter, Value)
-	Player_File[Parameter] = Value
-	writefile("Aeon.txt", HttpService:JSONEncode(Player_File))
-end
+local Discord          = Instance.new("ScreenGui")
+Discord.Name           = "Discord"
+Discord.Parent         = game.CoreGui
+Discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 function Library:Window(Text)
 	local CurrentServerToggled              = ""
@@ -515,7 +515,7 @@ function Library:Window(Text)
 		local ServerWhiteFrame              = Instance.new("Frame")
 		local ServerWhiteFrameCorner        = Instance.new("UICorner")
 
-		Server.Name                         = Text.."Server"
+		Server.Name                         = Text
 		Server.Parent                       = ServersHold
 		Server.BackgroundColor3             = Color3.fromRGB(47, 49, 54)
 		Server.Position                     = UDim2.new(0.125, 0, 0, 0)
@@ -868,7 +868,7 @@ function Library:Window(Text)
 			)
 
 			ServerFrame.Visible  = true
-			Server.Name          = Text.."Server"
+			Server.Name          = Text
 			CurrentServerToggled = Server.Name
 			FS                   = true
 		end
@@ -2071,7 +2071,9 @@ function Library:Window(Text)
 			end
 
 			function ChannelContent:Bind(Text, PresetBind, Callback)
-				local Key                           = PresetBind.Name
+				local Saves                         = Player_File[CurrentServerToggled]["KEYBINDS"]
+				
+				local Key                           = Saves[Text] or PresetBind.Name
 				local Keybind                       = Instance.new("TextButton")
 				local KeybindTitle                  = Instance.new("TextLabel")
 				local KeybindText                   = Instance.new("TextLabel")
@@ -2119,9 +2121,11 @@ function Library:Window(Text)
 					Binding          = true
 					
 					local InputWait  = UserInputService.InputBegan:wait()
-					if InputWait.KeyCode.Name ~= "Unknown" then
+					if (InputWait.KeyCode.Name ~= "Unknown" or InputWait.KeyCode.Name ~= "I" or InputWait.KeyCode.Name ~= "O") then
 						KeybindText.Text = InputWait.KeyCode.Name
 						Key              = InputWait.KeyCode.Name
+						
+						Save(CurrentServerToggled, {KEYBINDS = {[Text] = Key}})
 					end
 				end)
 
