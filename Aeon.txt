@@ -2114,7 +2114,7 @@ function Library:Window(Text)
 				KeybindText.Position                = UDim2.new(0, 316, 0, 0)
 				KeybindText.Size                    = UDim2.new(0, 85, 0, 30)
 				KeybindText.Font                    = Enum.Font.Gotham
-				KeybindText.Text                    = PresetBind.Name
+				KeybindText.Text                    = Saves or PresetBind.Name
 				KeybindText.TextColor3              = Color3.fromRGB(127, 131, 137)
 				KeybindText.TextSize                = 14.000
 				KeybindText.TextXAlignment          = Enum.TextXAlignment.Right
