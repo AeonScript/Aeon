@@ -2130,6 +2130,7 @@ function Library:Window(Text)
 						Key              = InputWait.KeyCode.Name
 						
 						Save(CurrentServerToggled, {KEYBINDS = {[Text] = Key}})
+						Library:Notification("KEYBINDS", "Setting has been saved.", "Ok!")
 					end
 				end)
 
