@@ -2077,7 +2077,7 @@ function Library:Window(Text)
 					Saves = Player_File[CurrentServerToggled]['KEYBINDS']
 				end)
 				
-				local Key                           = Saves[Text] or PresetBind.Name
+				local Key                           = Saves or PresetBind.Name
 				local Keybind                       = Instance.new("TextButton")
 				local KeybindTitle                  = Instance.new("TextLabel")
 				local KeybindText                   = Instance.new("TextLabel")
