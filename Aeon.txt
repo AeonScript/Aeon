@@ -2075,6 +2075,7 @@ function Library:Window(Text)
 				
 				pcall(function()
 					Saves = Player_File[CurrentServerToggled]['KEYBINDS'][Text]
+					print(Saves)
 				end)
 				
 				local Key                           = Saves or PresetBind.Name
