@@ -2072,13 +2072,13 @@ function Library:Window(Text)
 
 			function ChannelContent:Bind(Text, PresetBind, Callback)
 				local Saves
+				local Key = PresetBind.Name
 				
 				pcall(function()
 					Saves = Player_File[CurrentServerToggled]['KEYBINDS'][Text]
-					print(Saves)
+					Key   = Saves
 				end)
 				
-				local Key                           = Saves or PresetBind.Name
 				local Keybind                       = Instance.new("TextButton")
 				local KeybindTitle                  = Instance.new("TextLabel")
 				local KeybindText                   = Instance.new("TextLabel")
