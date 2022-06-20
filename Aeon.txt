@@ -2126,8 +2126,11 @@ function Library:Window(Text)
 					
 					local InputWait  = UserInputService.InputBegan:Wait()
 					if (InputWait.KeyCode.Name == "I" or InputWait.KeyCode.Name == "O" or InputWait.KeyCode.Name == "Unknown") then
-						KeybindText.Text = Saves or PresetBind.Name
-						Key              = Saves or PresetBind.Name
+						KeybindText.Text = PresetBind.Name
+						Key              = PresetBind.Name
+						
+						Save(CurrentServerToggled, {KEYBINDS = {[PresetBind.Name] = Key}})
+						Library:Notification("KEYBIND", "Setting has been reverted.", "Ok!")
 					else
 						KeybindText.Text = InputWait.KeyCode.Name
 						Key              = InputWait.KeyCode.Name
