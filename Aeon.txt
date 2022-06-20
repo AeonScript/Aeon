@@ -2125,7 +2125,7 @@ function Library:Window(Text)
 					Binding          = true
 					
 					local InputWait  = UserInputService.InputBegan:Wait()
-					if InputWait.KeyCode.Name == "I" then
+					if (InputWait.KeyCode.Name == "I" or InputWait.KeyCode.Name == "O" or InputWait.KeyCode.Name == "Unknown") then
 						KeybindText.Text = Saves or PresetBind.Name
 						Key              = Saves or PresetBind.Name
 					else
