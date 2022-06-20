@@ -489,14 +489,14 @@ function Library:Window(Text)
 				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 				{BackgroundTransparency = 1}
 			):Play()
-
-			Notification:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
+			
 			TweenService:Create(
 				Notification,
 				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 				{BackgroundTransparency = 1}
 			):Play()
-
+			Notification:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
+			
 			wait(.2)
 			NotificationHolderMain:Destroy()
 		end)
@@ -2125,7 +2125,7 @@ function Library:Window(Text)
 					Binding          = true
 					
 					local InputWait  = UserInputService.InputBegan:wait()
-					if (InputWait.KeyCode.Name ~= "Unknown" or InputWait.KeyCode.Name ~= "I" or InputWait.KeyCode.Name ~= "O") then
+					if not (InputWait.KeyCode.Name == "Unknown" and InputWait.KeyCode.Name == "I" and InputWait.KeyCode.Name == "O") then
 						KeybindText.Text = InputWait.KeyCode.Name
 						Key              = InputWait.KeyCode.Name
 						
